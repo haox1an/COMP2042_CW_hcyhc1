@@ -126,7 +126,10 @@ public class Animal extends Actor {
 	public void frogDeath(long now, String TypeOfDeath) {
 		String car = "car";
 		String water = "water";
-		
+
+		changeScore = true;
+		points -= 50;
+
 		Image[] cardeath = new Image[4];
 		cardeath [0] = new Image("file:src/View/cardeath1.png", FrogImgSize, FrogImgSize, true, true);
 		cardeath [1] = new Image("file:src/View/cardeath2.png", FrogImgSize, FrogImgSize, true, true);
@@ -186,8 +189,7 @@ public class Animal extends Actor {
 	public void IntersectCar(long now) {
 		death = true;
 		frogDeath(now, "car");
-		changeScore = true;
-		points -= 50;
+
 	}
 	
 	public void IntersectLongLog() {
