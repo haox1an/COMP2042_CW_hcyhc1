@@ -58,7 +58,7 @@ public class HelpDisplay {
 	}
 	
 	public void addInstructions() {
-		instructions = new ImageView(new Image("file:src/main/java/View/HowToPlay.png", 500, 700, true, true));
+		instructions = new ImageView(new Image("file:src/main/resources/Img/HowToPlay.png", 500, 700, true, true));
 		helpPane.add(instructions);
 		instructions.setLayoutX(50);
 		instructions.setLayoutY(250);
