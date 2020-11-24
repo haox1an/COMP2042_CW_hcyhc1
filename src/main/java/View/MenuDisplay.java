@@ -2,6 +2,7 @@ package View;
 
 import Controller.FroggerButton;
 import Controller.StartButton;
+import Controller.HelpButton;
 import Controller.MyStage;
 import Controller.QuitButton;
 import Model.BackgroundImage;
@@ -69,7 +70,7 @@ public class MenuDisplay {
 	
 	public void createHelpButton() 
 	{
-		helpButton = new FroggerButton("HELP", 50, 500);
+		HelpButton helpButton = new HelpButton( 550, 700);
 		mainPane.add(helpButton);
 		
 		helpButton.setOnAction(new EventHandler<ActionEvent>()
