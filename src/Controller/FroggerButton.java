@@ -21,7 +21,7 @@ public class FroggerButton extends Button{
 	{
 		setButtonFont();
 		setPrefWidth(500);
-		setPrefHeight(199);
+		setPrefHeight(200);
 		setText(text);
 		setStyle(Button_Style1);
 		initializeButtonListener();
