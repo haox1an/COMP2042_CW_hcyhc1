@@ -13,8 +13,8 @@ import javafx.scene.text.Font;
 
 public class FroggerButton extends Button{
 	
-	private final String Button_Style1 = "-fx-background-color: transparent; -fx-background-image: url('main/java/Controller/Button.png'); -fx-background-repeat: no-repeat; -fx-background-position: center;";
-	private final String Button_Style2 = "-fx-background-color: transparent; -fx-background-image: url('main/java/Controller/frog_face.png'); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-background-size: 200px;";
+	private final String Button_Style1 = "-fx-background-color: transparent; -fx-background-image: url('main/resources/Img/Button.png'); -fx-background-repeat: no-repeat; -fx-background-position: center;";
+	private final String Button_Style2 = "-fx-background-color: transparent; -fx-background-image: url('main/resources/Img/frog_face.png'); -fx-background-repeat: no-repeat; -fx-background-position: center; -fx-background-size: 200px;";
 	private final String Button_Font = "src/main/java/Controller/ARCADECLASSIC.ttf";
 
 	public FroggerButton(String text, int Xpos, int Ypos)
@@ -60,7 +60,7 @@ public class FroggerButton extends Button{
 			}
 		});
 		
-		setOnMouseReleased(new EventHandler<MouseEvent>() {
+		setOnMouseReleased(snew EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
 				if(event.getButton().equals(MouseButton.PRIMARY))
