@@ -18,8 +18,8 @@ public class QuitButton extends Button{
 	
 	public QuitButton(double Xpos, double Ypos) 
 	{
-		blackButton = new ImageView(new Image("file:src/main/java/Controller/BlackButton3.png", imgSize, imgSize, true, true));
-		redButton = new ImageView(new Image("file:src/main/java/Controller/RedButton3.png", imgSize, imgSize, true, true));
+		blackButton = new ImageView(new Image("file:src/main/resources/Img/BlackButton3.png", imgSize, imgSize, true, true));
+		redButton = new ImageView(new Image("file:src/main/resources/Img/RedButton3.png", imgSize, imgSize, true, true));
 		setStyle(Button_Style1);
 		setPrefSize(80,80);
 		setGraphic(blackButton);

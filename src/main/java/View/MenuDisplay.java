@@ -1,6 +1,7 @@
 package View;
 
 import Controller.FroggerButton;
+import Controller.StartButton;
 import Controller.MyStage;
 import Controller.QuitButton;
 import Model.BackgroundImage;
@@ -51,7 +52,7 @@ public class MenuDisplay {
 	
 	public void createStartButton() 
 	{
-		startButton = new FroggerButton("START", 50, 200);
+		StartButton startButton = new StartButton( 65, 250);
 		mainPane.add(startButton);
 		
 		startButton.setOnAction(new EventHandler<ActionEvent>()
