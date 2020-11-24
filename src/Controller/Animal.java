@@ -186,8 +186,8 @@ public class Animal extends Actor {
 	public void IntersectCar(long now) {
 		death = true;
 		frogDeath(now, "car");
-		
-		
+		changeScore = true;
+		points -= 50;
 	}
 	
 	public void IntersectLongLog() {
