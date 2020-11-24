@@ -1,6 +1,5 @@
 package View;
 
-import Controller.FroggerButton;
 import Controller.StartButton;
 import Controller.HelpButton;
 import Controller.MyStage;
@@ -17,8 +16,8 @@ public class MenuDisplay {
 	Scene menuScene;
 	Stage menuStage;
 	
-	FroggerButton startButton;
-	FroggerButton helpButton;
+	StartButton startButton;
+	HelpButton helpButton;
 	QuitButton quitButton;
 	
 	
@@ -53,7 +52,7 @@ public class MenuDisplay {
 	
 	public void createStartButton() 
 	{
-		StartButton startButton = new StartButton( 65, 250);
+		startButton = new StartButton( 65, 300);
 		mainPane.add(startButton);
 		
 		startButton.setOnAction(new EventHandler<ActionEvent>()
@@ -70,7 +69,7 @@ public class MenuDisplay {
 	
 	public void createHelpButton() 
 	{
-		HelpButton helpButton = new HelpButton( 550, 700);
+		helpButton = new HelpButton( 500, 700);
 		mainPane.add(helpButton);
 		
 		helpButton.setOnAction(new EventHandler<ActionEvent>()

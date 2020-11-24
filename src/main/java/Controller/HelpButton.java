@@ -9,10 +9,10 @@ import javafx.scene.input.MouseEvent;
 
 
 public class HelpButton extends Button {
-    private final int width = 450;
-    private final int height =1000;
+    private final int width = 80;
+    private final int height = 80;
 
-    ImageView HelpButtonPressed = new ImageView(new Image("file:src/main/resources/Img/HelpButton.png", width, height, true, true));
+    ImageView HelpButtonPressed = new ImageView(new Image("file:src/main/resources/Img/HelpButtonPressed.png", width, height, true, true));
     ImageView HelpButtonReleased = new ImageView(new Image("file:src/main/resources/Img/HelpButton.png", width, height, true, true));
 
 
@@ -23,6 +23,7 @@ public class HelpButton extends Button {
     {
         setGraphic(HelpButtonReleased);
         setStyle(Button_Style1);
+        setPrefSize(80,80);
         setLayoutX(Xpos);
         setLayoutY(Ypos);
         initializeButtonListener();
