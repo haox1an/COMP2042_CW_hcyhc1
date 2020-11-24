@@ -45,7 +45,7 @@ public class MenuDisplay {
 	}
 	
 	public void createBackground() {
-		BackgroundImage menuBackground = new BackgroundImage("file:src/main/java/View/Menu.jpg");
+		BackgroundImage menuBackground = new BackgroundImage("file:src/main/resources/Img/Menu.jpg");
 		mainPane.add(menuBackground);
 	}
 	

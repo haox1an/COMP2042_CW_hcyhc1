@@ -36,7 +36,7 @@ public class HelpDisplay {
 	
 	public void createBackground()
 	{
-		BackgroundImage helpBackground = new BackgroundImage("file:src/main/java/View/Menu.jpg");
+		BackgroundImage helpBackground = new BackgroundImage("file:src/main/resources/Img/Menu.jpg");
 		helpPane.add(helpBackground);
 	}
 	

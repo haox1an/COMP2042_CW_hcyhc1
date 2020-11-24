@@ -6,6 +6,7 @@ import java.util.List;
 import Controller.Actor;
 import Controller.Animal;
 import Controller.MyStage;
+import Controller.QuitButton;
 import Model.BackgroundImage;
 import Model.Car;
 import Model.Digit;
@@ -16,6 +17,8 @@ import Model.LongTruck;
 import Model.Truck;
 import Model.Turtle;
 import javafx.animation.AnimationTimer;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -43,6 +46,7 @@ public class DisplayGame{
 		addFrog();
 		addEndImg();
 		timerstart();
+		createQuitButton();
 	}
 	
 	
@@ -108,7 +112,7 @@ public class DisplayGame{
 	}
 
 	public void createBackground() {
-		BackgroundImage gameBackground = new BackgroundImage("file:src/main/java/View/iKogsKW.png");
+		BackgroundImage gameBackground = new BackgroundImage("file:src/main/resources/Img/iKogsKW.png");
 		gamePane.add(gameBackground);
 	}
 	
@@ -175,7 +179,24 @@ public class DisplayGame{
 				  shift+=30;
 				}
 		}
-		
+
+		public void createQuitButton() {
+			QuitButton quitButton = new QuitButton(510, -2);
+			gamePane.add(quitButton);
+			quitButton.setOnAction(new EventHandler<ActionEvent>()
+			{
+				@Override
+				public void handle(ActionEvent event)
+				{
+					gameStage.hide();
+					MenuDisplay menu = new MenuDisplay();
+					menu.createMenuStage();
+				}
+			});
+
+		}
+
+
 		}
 
 		

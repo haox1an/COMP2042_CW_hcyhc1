@@ -25,6 +25,7 @@ public class Main extends Application {
 		MenuDisplay menu = new MenuDisplay();
 		primaryStage = menu.getStage();
 		primaryStage.show();
+		primaryStage.setTitle("Frogger");
 		
 	}
 }
