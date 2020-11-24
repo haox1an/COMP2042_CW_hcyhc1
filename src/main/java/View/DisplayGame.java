@@ -1,20 +1,20 @@
-package main.java.View;
+package View;
 
 
 import java.util.List;
 
-import main.java.Controller.Actor;
-import main.java.Controller.Animal;
-import main.java.Controller.MyStage;
-import main.java.Model.BackgroundImage;
-import main.java.Model.Car;
-import main.java.Model.Digit;
-import main.java.Model.End;
-import main.java.Model.Log;
-import main.java.Model.LongLog;
-import main.java.Model.LongTruck;
-import main.java.Model.Truck;
-import main.java.Model.Turtle;
+import Controller.Actor;
+import Controller.Animal;
+import Controller.MyStage;
+import Model.BackgroundImage;
+import Model.Car;
+import Model.Digit;
+import Model.End;
+import Model.Log;
+import Model.LongLog;
+import Model.LongTruck;
+import Model.Truck;
+import Model.Turtle;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;

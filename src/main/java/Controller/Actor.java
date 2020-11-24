@@ -1,4 +1,4 @@
-package main.java.Controller;
+package Controller;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.input.InputEvent;;

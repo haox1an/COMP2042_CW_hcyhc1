@@ -1,8 +1,8 @@
-package main.java.View;
+package View;
 
-import main.java.Controller.MyStage;
-import main.java.Controller.QuitButton;
-import main.java.Model.BackgroundImage;
+import Controller.MyStage;
+import Controller.QuitButton;
+import Model.BackgroundImage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;

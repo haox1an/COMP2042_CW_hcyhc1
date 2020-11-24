@@ -1,6 +1,6 @@
-package main.java.Model;
+package Model;
 
-import main.java.Controller.Actor;
+import Controller.Actor;
 import javafx.scene.image.Image;
 
 public class Log extends Actor {

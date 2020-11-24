@@ -1,9 +1,9 @@
-package main.java.p4_group_8_repo;
+package p4_group_8_repo;
 
-import main.java.Controller.Animal;
-import main.java.Controller.MyStage;
-import main.java.View.DisplayGame;
-import main.java.View.MenuDisplay;
+import Controller.Animal;
+import Controller.MyStage;
+import View.DisplayGame;
+import View.MenuDisplay;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.stage.Stage;

@@ -1,14 +1,14 @@
-package main.java.Controller;
+package Controller;
 
 import java.util.ArrayList;
 
-import main.java.Model.Car;
-import main.java.Model.End;
-import main.java.Model.Log;
-import main.java.Model.LongLog;
-import main.java.Model.LongTruck;
-import main.java.Model.Truck;
-import main.java.Model.Turtle;
+import Model.Car;
+import Model.End;
+import Model.Log;
+import Model.LongLog;
+import Model.LongTruck;
+import Model.Truck;
+import Model.Turtle;
 import javafx.event.EventHandler;
 
 import javafx.scene.image.Image;
