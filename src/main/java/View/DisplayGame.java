@@ -42,6 +42,7 @@ public class DisplayGame {
 		gameScene = new Scene(gamePane, 600, 800);
 		gameStage = new Stage();
 		gameStage.setScene(gameScene);
+		gameStage.setTitle("Frogger");
 		createBackground();
 		addObstacles();
 		addFrog();
@@ -204,8 +205,6 @@ public class DisplayGame {
 			displayGameOver = new DisplayGameOver();
 			displayGameOver.createStage();
 			timer.stop();
-
-
 		}
 
 

@@ -25,7 +25,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		MenuDisplay menu = new MenuDisplay();
 		DisplayGameOver game = new DisplayGameOver();
-		primaryStage = game.getStage();
+		primaryStage = menu.getStage();
 		primaryStage.show();
 		
 	}
