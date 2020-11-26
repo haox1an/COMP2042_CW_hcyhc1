@@ -19,7 +19,8 @@ import javafx.scene.input.KeyEvent;
 public class Animal extends Actor {
 
 	public Image[] frog;
-	
+
+	public int lives = 5;
 	public int points = 0;
 	public int end = 0;
 	
@@ -32,9 +33,8 @@ public class Animal extends Actor {
 	private final int FrogImgSize = 40;
 	
 	public boolean death = false;
-	public boolean carDeath = false;
-	public boolean waterDeath = false;
 	public boolean changeScore = false;
+	public boolean isDeath = false;
 	
 	public int DeathAnimationTime = 0;
 	double w = 800;
@@ -129,6 +129,7 @@ public class Animal extends Actor {
 
 		changeScore = true;
 		points -= 50;
+		lives --;
 
 		Image[] cardeath = new Image[4];
 		cardeath [0] = new Image("file:src/main/java/Controller/cardeath1.png", FrogImgSize, FrogImgSize, true, true);
@@ -278,11 +279,10 @@ public class Animal extends Actor {
 		return false;
 	}
 	
-	public void EndScene() {
-		
-		
-		
+	public boolean gameOver(){
+		return lives == 0;
 	}
+
 	
 
 }

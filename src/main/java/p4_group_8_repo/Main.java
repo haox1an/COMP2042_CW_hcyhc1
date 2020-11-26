@@ -7,6 +7,7 @@ import View.MenuDisplay;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import View.DisplayGameOver;
 
 public class Main extends Application {
 	AnimationTimer timer;
@@ -23,9 +24,9 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		MenuDisplay menu = new MenuDisplay();
-		primaryStage = menu.getStage();
+		DisplayGameOver game = new DisplayGameOver();
+		primaryStage = game.getStage();
 		primaryStage.show();
-		primaryStage.setTitle("Frogger");
 		
 	}
 }
