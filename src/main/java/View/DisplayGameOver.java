@@ -41,17 +41,15 @@ public class DisplayGameOver {
 
     public void createText(String text, int Xpos, int Ypos){
         Text gameoverText = new Text();
+        Font font = Font.loadFont("file:src/main/resources/Font/ARCADECLASSIC.ttf", 40);
         gameoverText.setText(text);
+        gameoverText.setFont(font);
         gameoverText.setFill(Color.WHITE);
         gameoverText.setX(Xpos);
         gameoverText.setY(Ypos);
         gameoverPane.add(gameoverText);
 
-        try {
-            gameoverText.setFont(Font.loadFont(new FileInputStream("src/main/resources/Font/ARCADECLASSIC.ttf"), 40));
-        } catch (FileNotFoundException e) {
-            gameoverText.setFont(Font.font("Verdana", 40));
-        }
+
     }
 
     public void keyListener(){
