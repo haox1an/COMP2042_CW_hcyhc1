@@ -7,19 +7,13 @@ import Controller.Actor;
 import Controller.Animal;
 import Controller.MyStage;
 import Controller.QuitButton;
-import Model.BackgroundImage;
-import Model.Car;
-import Model.Digit;
-import Model.End;
-import Model.Log;
-import Model.LongLog;
-import Model.LongTruck;
-import Model.Truck;
-import Model.Turtle;
+import Model.*;
 import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class DisplayGame {
@@ -29,7 +23,7 @@ public class DisplayGame {
 	Animal frog;
 	Stage gameStage;
 	DisplayGameOver displayGameOver;
-
+	public ImageView[] froglives;
 	final int endSceneYPos = 108;
 	final int GridY = 55;
 
@@ -149,6 +143,9 @@ public class DisplayGame {
 				showWinning();
 				showGameOver();
 				System.out.println(frog.lives);
+				createLives();
+				int e;
+
 
 			}
 		};
@@ -200,19 +197,21 @@ public class DisplayGame {
 		if (frog.getStop()) {
 			System.out.print("STOPP");
 			gameStage.hide();
-			displayGameOver = new DisplayGameOver();
-			displayGameOver.createStage();
+			DisplayWin displayWin = new DisplayWin();
+			displayWin.createStage();
 			timer.stop();
 		}
 
 	}
 
-	public void createLives(){
-
-
-
+	public void createLives() {
+		gamePane.add(new FrogLife(frog.getlives()));
 	}
+
+
+
 }
+
 		
 
 

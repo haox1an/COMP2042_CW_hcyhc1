@@ -257,10 +257,10 @@ public class Animal extends Actor {
 				}
 			
 			else if (getY() < waterPositionY){
-//				death = true;
-//				frogDeath(now, "water");
-//				removeLife = true;
+				death = true;
+				frogDeath(now, "water");
 			}
+			getlives();
 		}
 	}
 	public boolean getStop() {
@@ -283,5 +283,8 @@ public class Animal extends Actor {
 		return this.lives < 0;
 	}
 
+	public int getlives(){
+		return this.lives;
 
+	}
 }
