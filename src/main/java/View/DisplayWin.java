@@ -28,7 +28,7 @@ public class DisplayWin {
         winStage.setScene(winScene);
         winStage.setTitle("You Won!");
         createBackground();
-        Text("Press SpaceBar to return to Menu", 50, 160);
+        Text("Press SpaceBar to return to Menu", 46, 160);
         keyListener();
 
     }
@@ -50,9 +50,9 @@ public class DisplayWin {
 
     public void Text(String text, int Xpos, int Ypos){
         Text winText = new Text();
-        Font font = Font.loadFont("file:src/main/resources/Font/ARCADECLASSIC.ttf", 30);
+        Font font = Font.loadFont("file:src/main/resources/Font/ARCADECLASSIC.ttf", 33);
         winText.setText(text);
-        winText.setFill(Color.GREY);
+        winText.setFill(Color.LIGHTGREY);
         winText.setX(Xpos);
         winText.setY(Ypos);
         winText.setFont(font);
