@@ -48,7 +48,7 @@ public class DisplayGame {
 	public void addObstacles() {
 		int[] lane = new int[11];
 		for (int i = 0; i < lane.length; i++) {
-			lane[i] = 704 - GridY * (i);
+			lane[i] = 708w - GridY * (i);
 		}
 		//row0
 		gamePane.add(new Car(0, lane[0], -2));
@@ -64,36 +64,36 @@ public class DisplayGame {
 
 
 		//row3
-		gamePane.add(new LongTruck(100, 704 - GridY * 3, -1));
-		gamePane.add(new Car(500, 704 - GridY * 3, -1));
+		gamePane.add(new LongTruck(100, lane[3], -1));
+		gamePane.add(new Car(500, lane[3], -1));
 
 
 		//row4
-		gamePane.add(new Car(0, 704 - GridY * 4, -2));
+		gamePane.add(new Car(0, lane[4], -2));
 
 		//row5
-		gamePane.add(new Turtle(500, 704 - GridY * 6, -1));
-		gamePane.add(new Turtle(300, 704 - GridY * 6, -1));
-		gamePane.add(new Turtle(700, 704 - GridY * 6, -1));
+		gamePane.add(new Turtle(500, lane[6], -1));
+		gamePane.add(new Turtle(300, lane[6], -1));
+		gamePane.add(new Turtle(700, lane[6], -1));
 
 		//row6
-		gamePane.add(new Log(50, 704 - GridY * 7, 0.75));
-		gamePane.add(new Log(270, 704 - GridY * 7, 0.75));
-		gamePane.add(new Log(490, 704 - GridY * 7, 0.75));
+		gamePane.add(new Log(50, lane[7], 0.75));
+		gamePane.add(new Log(270, lane[7], 0.75));
+		gamePane.add(new Log(490, lane[7], 0.75));
 
 		//row7
-		gamePane.add(new Turtle(600, 217, -1));
-		gamePane.add(new Turtle(400, 217, -1));
-		gamePane.add(new Turtle(200, 217, -1));
+		gamePane.add(new Turtle(600, lane[8], -1));
+		gamePane.add(new Turtle(400, lane[8], -1));
+		gamePane.add(new Turtle(200, lane[8], -1));
 
 		//row8
-		gamePane.add(new LongLog(0, 276, -2));
-		gamePane.add(new LongLog(400, 276, -2));
+		gamePane.add(new LongLog(0, lane[9], -2));
+		gamePane.add(new LongLog(400, lane[9], -2));
 
 		//row9
-		gamePane.add(new Log(0, 166, 0.75));
-		gamePane.add(new Log(220, 166, 0.75));
-		gamePane.add(new Log(440, 166, 0.75));
+		gamePane.add(new Log(0, lane[10]+7, 0.75));
+		gamePane.add(new Log(220, lane[10]+7, 0.75));
+		gamePane.add(new Log(440, lane[10]+7, 0.75));
 	}
 
 	public void addEndImg() {
