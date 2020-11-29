@@ -15,6 +15,7 @@ import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -40,7 +41,7 @@ public class DisplayGame {
 		addObstacles(level);
 		addFrog();
 		addEnd();
-		createQuitButton();
+		addQuitButton();
 		timerstart();
 		addDigit();
 
@@ -126,8 +127,9 @@ public class DisplayGame {
 	}
 
 	public void addDigit() {
-		Digit digit = new Digit(0, 30, 500, 25);
-		gamePane.add(digit);
+//		Digit digit = new Digit(0, 30, 500, 25);
+//		gamePane.add(digit);
+		gamePane.add(new ScoreBar(40));
 	}
 
 	public void addMusic() {
@@ -141,6 +143,10 @@ public class DisplayGame {
 
 	}
 
+	public void addLives() {
+		gamePane.add(new FrogLife(frog.getlives()));
+	}
+
 	public void setNumber(int n) {
 		int shift = 0;
 		while (n > 0) {
@@ -152,7 +158,7 @@ public class DisplayGame {
 		}
 	}
 
-	public void createQuitButton() {
+	public void addQuitButton() {
 		QuitButton quitButton = new QuitButton(510, -2);
 		gamePane.add(quitButton);
 		quitButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -165,9 +171,7 @@ public class DisplayGame {
 		});
 
 	}
-	public void addLives() {
-		gamePane.add(new FrogLife(frog.getlives()));
-	}
+
 
 	public void timerstart() {
 		gameTimer();
@@ -187,15 +191,16 @@ public class DisplayGame {
 
 	public void showWinning() {
 		if (frog.getStop()) {
-			if (level > 10) {
+			if (level >= 10) {
 				gameStage.hide();
 				DisplayWin displayWin = new DisplayWin();
 				displayWin.createStage();
 				timer.stop();
 			}
-			level++;
-			changeLv(level);
-
+			else {
+				level++;
+				changeLv(level);
+			}
 		}
 	}
 
@@ -206,7 +211,7 @@ public class DisplayGame {
 		addObstacles(level);
 		addFrog();
 		addEnd();
-		createQuitButton();
+		addQuitButton();
 	}
 
 	public void gameTimer() {
@@ -225,6 +230,7 @@ public class DisplayGame {
 				showGameOver();
 				addLives();
 				addLevel();
+				System.out.println(level);
 
 
 			}

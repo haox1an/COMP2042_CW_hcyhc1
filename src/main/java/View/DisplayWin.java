@@ -50,7 +50,7 @@ public class DisplayWin {
 
     public void Text(String text, int Xpos, int Ypos){
         Text winText = new Text();
-        Font font = Font.loadFont("file:src/main/resources/Font/Minecraft.ttf", 30);
+        Font font = Font.loadFont("file:src/main/resources/Font/ARCADECLASSIC.ttf", 30);
         winText.setText(text);
         winText.setFill(Color.GREY);
         winText.setX(Xpos);

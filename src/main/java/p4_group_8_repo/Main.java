@@ -26,7 +26,7 @@ public class Main extends Application {
 		MenuDisplay menu = new MenuDisplay();
 		DisplayWin win = new DisplayWin();
 		DisplayGameOver game = new DisplayGameOver();
-		primaryStage = menu.getStage();
+		primaryStage = win.getStage();
 		primaryStage.show();
 		
 	}
