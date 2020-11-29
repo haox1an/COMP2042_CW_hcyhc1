@@ -9,11 +9,15 @@ import Model.LongLog;
 import Model.LongTruck;
 import Model.Truck;
 import Model.Turtle;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.util.Duration;
 
 
 public class Animal extends Actor {
@@ -42,6 +46,14 @@ public class Animal extends Actor {
 	
 	
 	public Animal() {
+
+		setImage(frogImg(0));
+		frogReposition();
+		keyListener();
+	
+	}
+
+	public Image frogImg(int num){
 		frog = new Image[8];
 		frog[0] = new Image("file:src/main/java/Controller/froggerUp.png", FrogImgSize, FrogImgSize, true, true);
 		frog[1] = new Image("file:src/main/java/Controller/froggerLeft.png", FrogImgSize, FrogImgSize, true, true);
@@ -51,10 +63,7 @@ public class Animal extends Actor {
 		frog[5] = new Image("file:src/main/java/Controller/froggerLeftJump.png", FrogImgSize, FrogImgSize, true, true);
 		frog[6] = new Image("file:src/main/java/Controller/froggerDownJump.png", FrogImgSize, FrogImgSize, true, true);
 		frog[7] = new Image("file:src/main/java/Controller/froggerRightJump.png", FrogImgSize, FrogImgSize, true, true);
-		setImage(frog[0]);
-		frogReposition();
-		keyListener();
-	
+		return frog[num];
 	}
 
 		public void keyListener() {
@@ -65,25 +74,25 @@ public class Animal extends Actor {
 				if (event.getCode() == KeyCode.W || event.getCode() == KeyCode.UP)
 				{
 					move(0, -movementY);
-					setImage(frog[4]);
+					setImage(frogImg(4));
 				}
 				
 				if (event.getCode() == KeyCode.A || event.getCode() == KeyCode.LEFT)
 				{
 					move(-movementX, 0);
-					setImage(frog[5]);
+					setImage(frogImg(5));
 				}
 				
 				if (event.getCode() == KeyCode.S || event.getCode() == KeyCode.DOWN)
 				{
 					move(0, movementY);
-					setImage(frog[6]);
+					setImage(frogImg(6));
 				}
 				
 				if (event.getCode() == KeyCode.D || event.getCode() == KeyCode.RIGHT)
 				{
 					move(movementX, 0);
-					setImage(frog[7]);					
+					setImage(frogImg(7));
 				}
 
 			}	
@@ -96,20 +105,20 @@ public class Animal extends Actor {
 				if (event.getCode() == KeyCode.W || event.getCode() == KeyCode.UP) {	  
 						changeScore = true;
 						points+=10;
-						setImage(frog[0]);
+					setImage(frogImg(0));
 						move(0, -movementY);
 	            }
 				if (event.getCode() == KeyCode.A || event.getCode() == KeyCode.LEFT)  {	            	
 	            	 move(-movementX, 0);
-	            	 setImage(frog[1]);
+					setImage(frogImg(1));
 	            }
 	            if (event.getCode() == KeyCode.S || event.getCode() == KeyCode.DOWN) {	            	
 	            	 move(0, movementY);
-	            	 setImage(frog[2]);
+					setImage(frogImg(2));
 	            }
 	            if (event.getCode() == KeyCode.D || event.getCode() == KeyCode.RIGHT) {	            	
 	            	 move(movementX, 0);
-	            	 setImage(frog[3]);
+					setImage(frogImg(3));
 	            }
 	        }
 			}
@@ -146,28 +155,37 @@ public class Animal extends Actor {
 		if(TypeOfDeath == water)
 			array = waterdeath;
 		
-		if ((now)% 12 == 0) {
-			this.DeathAnimationTime++;
-		}
-		if (DeathAnimationTime == 1) {
-			setImage(array[0]);
-		}
-		if (DeathAnimationTime == 2) {
-			setImage(array[1]);
-		}
-		if (DeathAnimationTime == 3) {
-			setImage(array[2]);
-		}
-		if (DeathAnimationTime == 4) {
-			setImage(array[3]);
-		}
-		if (DeathAnimationTime == 5) {
-			this.DeathAnimationTime = 0;
-			setImage(frog[0]);
-			death = false;
-			frogReposition();
-			this.lives -= 1;
-		}
+//		if ((now)% 12 == 0) {
+//			this.DeathAnimationTime++;
+//		}
+//		if (DeathAnimationTime == 1) {
+//			setImage(array[0]);
+//		}
+//		if (DeathAnimationTime == 2) {
+//			setImage(array[1]);
+//		}
+//		if (DeathAnimationTime == 3) {
+//			setImage(array[2]);
+//		}
+//		if (DeathAnimationTime == 4) {
+//			setImage(array[3]);
+//		}
+//		if (DeathAnimationTime == 5) {
+//			this.DeathAnimationTime = 0;
+//			setImage(frog[0]);
+//			death = false;
+//			frogReposition();
+//			this.lives -= 1;
+//		}
+
+//		Timeline t = new Timeline();
+//
+//		t.getKeyFrames().add(new KeyFrame(
+//				Duration.millis(100),
+//				(ActionEvent event) -> {
+//					setImage(array[0]);
+//				}
+//		));
 		}
 	
 	public void checkIsFrogAtTheEdge() {
