@@ -63,7 +63,7 @@ public class DisplayGame {
 //		}
 			//row1w
 //		gamePane.add(new Truck(0, lane[1], info.ObjSpeed(0,0)));
-//		gamePane.add(new Truck(300, lane[1], 3));
+		gamePane.add(new Truck(300, lane[1], 3));
 //
 //		//row2
 //		gamePane.add(new Car(100, lane[2], 1));
