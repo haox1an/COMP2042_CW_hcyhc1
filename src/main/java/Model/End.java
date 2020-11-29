@@ -24,4 +24,9 @@ public class End extends Actor{
 	public boolean isEnd() {
 		return isEnd;
 	}
+
+	public void resetEnd(){
+
+
+	}
 }

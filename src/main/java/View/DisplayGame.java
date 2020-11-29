@@ -3,11 +3,14 @@ package View;
 
 import java.util.List;
 
-import Controller.Actor;
-import Controller.Animal;
-import Controller.MyStage;
-import Controller.QuitButton;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+import Controller.*;
 import Model.*;
+
 import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -26,7 +29,7 @@ public class DisplayGame {
 	public ImageView[] froglives;
 	final int endSceneYPos = 108;
 	final int GridY = 55;
-
+	int level = 1;
 
 	public DisplayGame() {
 
@@ -36,67 +39,73 @@ public class DisplayGame {
 		gameStage.setScene(gameScene);
 		gameStage.setTitle("Frogger");
 		createBackground();
-		addObstacles();
+		addObstacles(level);
 		addFrog();
-		addEndImg();
-		timerstart();
+		addEnd();
 		createQuitButton();
+		timerstart();
+		addDigit();
 
 	}
 
 
-	public void addObstacles() {
+
+	public void addObstacles(int lvl) {
+		int i;
 		int[] lane = new int[11];
-		for (int i = 0; i < lane.length; i++) {
-			lane[i] = 708w - GridY * (i);
+
+		for (i = 0; i < lane.length; i++) {
+			lane[i] = 708 - GridY * (i);
 		}
 		//row0
-		gamePane.add(new Car(0, lane[0], -2));
-
-		//row1 
-		gamePane.add(new Truck(0, lane[1], 3));
-		gamePane.add(new Truck(300, lane[1], 3));
-
-		//row2
-		gamePane.add(new Car(100, lane[2], 1));
-		gamePane.add(new Car(300, lane[2], 1));
-		gamePane.add(new Car(500, lane[2], 1));
-
-
-		//row3
-		gamePane.add(new LongTruck(100, lane[3], -1));
-		gamePane.add(new Car(500, lane[3], -1));
-
-
-		//row4
-		gamePane.add(new Car(0, lane[4], -2));
-
-		//row5
-		gamePane.add(new Turtle(500, lane[6], -1));
-		gamePane.add(new Turtle(300, lane[6], -1));
-		gamePane.add(new Turtle(700, lane[6], -1));
-
-		//row6
-		gamePane.add(new Log(50, lane[7], 0.75));
-		gamePane.add(new Log(270, lane[7], 0.75));
-		gamePane.add(new Log(490, lane[7], 0.75));
-
-		//row7
-		gamePane.add(new Turtle(600, lane[8], -1));
-		gamePane.add(new Turtle(400, lane[8], -1));
-		gamePane.add(new Turtle(200, lane[8], -1));
-
-		//row8
-		gamePane.add(new LongLog(0, lane[9], -2));
-		gamePane.add(new LongLog(400, lane[9], -2));
-
-		//row9
-		gamePane.add(new Log(0, lane[10]+7, 0.75));
-		gamePane.add(new Log(220, lane[10]+7, 0.75));
-		gamePane.add(new Log(440, lane[10]+7, 0.75));
+		ObjectInfo info = new ObjectInfo();
+		for (i = 0; i < info.ObjNum(lvl,0); i++) {
+			gamePane.add(new Car(0 + (i * 200), lane[0], info.ObjSpeed(lvl, 0)));
+		}
+			//row1w
+//		gamePane.add(new Truck(0, lane[1], info.ObjSpeed(0,0)));
+//		gamePane.add(new Truck(300, lane[1], 3));
+//
+//		//row2
+//		gamePane.add(new Car(100, lane[2], 1));
+//		gamePane.add(new Car(300, lane[2], 1));
+//		gamePane.add(new Car(500, lane[2], 1));
+//
+//
+//		//row3
+//		gamePane.add(new LongTruck(100, lane[3], -1));
+//		gamePane.add(new Car(500, lane[3], -1));
+//
+//
+//		//row4
+//		gamePane.add(new Car(0, lane[4], -2));
+//
+//		//row5
+//		gamePane.add(new Turtle(500, lane[6], -1));
+//		gamePane.add(new Turtle(300, lane[6], -1));
+//		gamePane.add(new Turtle(700, lane[6], -1));
+//
+//		//row6
+//		gamePane.add(new Log(50, lane[7], 0.75));
+//		gamePane.add(new Log(270, lane[7], 0.75));
+//		gamePane.add(new Log(490, lane[7], 0.75));
+//
+//		//row7
+//		gamePane.add(new Turtle(600, lane[8], -1));
+//		gamePane.add(new Turtle(400, lane[8], -1));
+//		gamePane.add(new Turtle(200, lane[8], -1));
+//
+//		//row8
+//		gamePane.add(new LongLog(0, lane[9], -2));
+//		gamePane.add(new LongLog(400, lane[9], -2));
+//
+//		//row9
+//		gamePane.add(new Log(0, lane[10]+7, 0.75));
+//		gamePane.add(new Log(220, lane[10]+7, 0.75));
+//		gamePane.add(new Log(440, lane[10]+7, 0.75));
 	}
 
-	public void addEndImg() {
+	public void addEnd() {
 		gamePane.add(new End(15));
 		gamePane.add(new End(143));
 		gamePane.add(new End(271));
@@ -119,7 +128,7 @@ public class DisplayGame {
 	}
 
 	public void addDigit() {
-		Digit digit = new Digit(0, 30, 360, 25);
+		Digit digit = new Digit(0, 30, 500, 25);
 		gamePane.add(digit);
 	}
 
@@ -128,34 +137,11 @@ public class DisplayGame {
 	}
 
 
-	public void gameTimer() {
-		timer = new AnimationTimer() {
-			@Override
-			public void handle(long now) {
-				List<Actor> actors = gamePane.getObjects(Actor.class);
+	public void addLevel(){
+		gamePane.add(new Level(0));
+		gamePane.add(new Level(level));
 
-				for (Actor anActor : actors) {
-					anActor.act(now);
-				}
-				if (frog.changeScore()) {
-					setNumber(frog.getPoints());
-				}
-				showWinning();
-				showGameOver();
-				System.out.println(frog.lives);
-				createLives();
-				int e;
-
-
-			}
-		};
 	}
-
-	public void timerstart() {
-		gameTimer();
-		timer.start();
-	}
-
 
 	public void setNumber(int n) {
 		int shift = 0;
@@ -163,7 +149,7 @@ public class DisplayGame {
 			int d = n / 10;
 			int k = n - d * 10;
 			n = d;
-			gamePane.add(new Digit(k, 30, 360 - shift, 25));
+			gamePane.add(new Digit(k, 30, 700 - shift, 25));
 			shift += 30;
 		}
 	}
@@ -181,6 +167,14 @@ public class DisplayGame {
 		});
 
 	}
+	public void addLives() {
+		gamePane.add(new FrogLife(frog.getlives()));
+	}
+
+	public void timerstart() {
+		gameTimer();
+		timer.start();
+	}
 
 	public void showGameOver() {
 		if (frog.gameOver()) {
@@ -195,20 +189,49 @@ public class DisplayGame {
 
 	public void showWinning() {
 		if (frog.getStop()) {
-			System.out.print("STOPP");
-			gameStage.hide();
-			DisplayWin displayWin = new DisplayWin();
-			displayWin.createStage();
-			timer.stop();
+			if (level > 2) {
+				gameStage.hide();
+				DisplayWin displayWin = new DisplayWin();
+				displayWin.createStage();
+				timer.stop();
+			}
+			level++;
+			changeLv(level);
+
 		}
-
 	}
 
-	public void createLives() {
-		gamePane.add(new FrogLife(frog.getlives()));
+	public void changeLv(int level){
+		frog.reset();
+		gamePane.getChildren().clear();
+		createBackground();
+		addObstacles(level);
+		addFrog();
+		addEnd();
+		createQuitButton();
 	}
 
+	public void gameTimer() {
+		timer = new AnimationTimer() {
+			@Override
+			public void handle(long now) {
+				List<Actor> actors = gamePane.getObjects(Actor.class);
 
+				for (Actor anActor : actors) {
+					anActor.act(now);
+				}
+				if (frog.changeScore()) {
+					setNumber(frog.getPoints());
+				}
+				showWinning();
+				showGameOver();
+				addLives();
+				addLevel();
+
+
+			}
+		};
+	}
 
 }
 

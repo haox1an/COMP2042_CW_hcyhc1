@@ -5,7 +5,7 @@ import javafx.scene.image.Image;
 
 public class Digit extends Actor{
 	int dim;
-	Image im1;
+	Image digit;
 	@Override
 	public void act(long now) {
 		// TODO Auto-generated method stub
@@ -13,8 +13,8 @@ public class Digit extends Actor{
 	}
 	
 	public Digit(int n, int size, int xPos, int yPos) {
-		im1 = new Image("file:src/main/resources/Img/"+n+".png", size, size, true, true);
-		setImage(im1);
+		digit = new Image("file:src/main/resources/Img/"+n+".png", size, size, true, true);
+		setImage(digit);
 		setX(xPos);
 		setY(yPos);
 	}

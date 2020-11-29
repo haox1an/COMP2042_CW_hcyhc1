@@ -233,7 +233,6 @@ public class Animal extends Actor {
 				getIntersectingObjects(Truck.class).size() >= 1 ||
 				getIntersectingObjects(LongTruck.class).size() >= 1)
 				{
-//				IntersectCar(now);
 			}
 
 			else if (getIntersectingObjects(Log.class).size() >= 1 && !death) {
@@ -285,6 +284,12 @@ public class Animal extends Actor {
 
 	public int getlives(){
 		return this.lives;
+	}
+
+	public void reset(){
+			frogReposition();
+			lives = 5;
+			end = 0;
 
 	}
 }
