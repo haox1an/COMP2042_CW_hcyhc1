@@ -7,6 +7,7 @@ public class Level extends Actor {
     final int size = 80;
     Image lvWord;
     Image lvNum;
+    Image lvFinal;
     public Level(int level){
         if(level == 0)
         {
@@ -14,6 +15,14 @@ public class Level extends Actor {
             setImage(lvWord);
             setX(170);
             setY(20);
+        }
+        else if(level == 10)
+        {
+            lvFinal = new Image("file:src/main/resources/Img/LevelFinal.png", 300, 270, true, true);
+            setImage(lvFinal);
+            setX(170);
+            setY(11);
+
         }
         else {
             lvNum = new Image("file:src/main/resources/Img/Level" + level + ".png", size, size, true, true);

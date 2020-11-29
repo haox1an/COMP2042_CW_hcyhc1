@@ -26,8 +26,6 @@ public class DisplayGame {
 	Animal frog;
 	Stage gameStage;
 	DisplayGameOver displayGameOver;
-	public ImageView[] froglives;
-	final int endSceneYPos = 108;
 	final int GridY = 55;
 	int level = 1;
 
@@ -59,9 +57,9 @@ public class DisplayGame {
 		}
 		//row0
 		ObjectInfo info = new ObjectInfo();
-		for (i = 0; i < info.ObjNum(lvl,0); i++) {
-			gamePane.add(new Car(0 + (i * 200), lane[0], info.ObjSpeed(lvl, 0)));
-		}
+//		for (i = 0; i < info.ObjNum(lvl,0); i++) {
+//			gamePane.add(new Car(0 + (i * 200), lane[0], info.ObjSpeed(lvl, 0)));
+//		}
 			//row1w
 //		gamePane.add(new Truck(0, lane[1], info.ObjSpeed(0,0)));
 //		gamePane.add(new Truck(300, lane[1], 3));
@@ -189,7 +187,7 @@ public class DisplayGame {
 
 	public void showWinning() {
 		if (frog.getStop()) {
-			if (level > 2) {
+			if (level > 10) {
 				gameStage.hide();
 				DisplayWin displayWin = new DisplayWin();
 				displayWin.createStage();
