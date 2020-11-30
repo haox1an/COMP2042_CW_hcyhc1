@@ -41,8 +41,8 @@ public class Animal extends Actor {
 	
 	public boolean death = false;
 	public boolean changeScore = false;
-	public boolean intersectC = false;
-	public boolean intersectW = false;
+	public boolean intersectCar = false;
+	public boolean intersectWater = false;
 	public int DeathAnimationTime = 0;
 	double w = 800;
 	ArrayList<End> inter = new ArrayList<End>();
@@ -100,7 +100,7 @@ public class Animal extends Actor {
 				}
 
 			}	
-				}		
+				}
 		});
 		setOnKeyReleased(new EventHandler<KeyEvent>() {
 			public void handle(KeyEvent event) {
@@ -134,7 +134,7 @@ public class Animal extends Actor {
 		setX(FrogPositionX);		
 		}
 	
-	public void frogDeath(long now, String TypeOfDeath) {
+	public void frogDeath(long now, String type) {
 		String car = "car";
 		String water = "water";
 		death = true;
@@ -142,23 +142,22 @@ public class Animal extends Actor {
 		points -= 50;
 
 		final Image[] cardeath = new Image[4];
-		cardeath [0] = new Image("file:src/main/java/Controller/cardeath1.png", FrogImgSize, FrogImgSize, true, true);
-		cardeath [1] = new Image("file:src/main/java/Controller/cardeath2.png", FrogImgSize, FrogImgSize, true, true);
-		cardeath [2] = new Image("file:src/main/java/Controller/cardeath3.png", FrogImgSize, FrogImgSize, true, true);
-		cardeath [3] = new Image("file:src/main/java/Controller/cardeath3.png", FrogImgSize, FrogImgSize, true, true);
-		
-		final Image[] waterdeath = new Image[4];
-		waterdeath [0] = new Image("file:src/main/java/Controller/waterdeath1.png", FrogImgSize,FrogImgSize , true, true);
-		waterdeath [1] = new Image("file:src/main/java/Controller/waterdeath2.png", FrogImgSize,FrogImgSize , true, true);
-		waterdeath [2] = new Image("file:src/main/java/Controller/waterdeath3.png", FrogImgSize,FrogImgSize , true, true);
-		waterdeath [3] = new Image("file:src/main/java/Controller/waterdeath4.png", FrogImgSize,FrogImgSize , true, true);
-		
-		Image[] array = new Image[4];
-		if(TypeOfDeath == car)
-			array = cardeath;
-		if(TypeOfDeath == water)
-			array = waterdeath;
+		cardeath[0] = new Image("file:src/main/java/Controller/cardeath1.png", FrogImgSize, FrogImgSize, true, true);
+		cardeath[1] = new Image("file:src/main/java/Controller/cardeath2.png", FrogImgSize, FrogImgSize, true, true);
+		cardeath[2] = new Image("file:src/main/java/Controller/cardeath3.png", FrogImgSize, FrogImgSize, true, true);
+		cardeath[3] = new Image("file:src/main/java/Controller/cardeath3.png", FrogImgSize, FrogImgSize, true, true);
 
+		final Image[] waterdeath = new Image[4];
+		waterdeath[0] = new Image("file:src/main/java/Controller/waterdeath1.png", FrogImgSize, FrogImgSize, true, true);
+		waterdeath[1] = new Image("file:src/main/java/Controller/waterdeath2.png", FrogImgSize, FrogImgSize, true, true);
+		waterdeath[2] = new Image("file:src/main/java/Controller/waterdeath3.png", FrogImgSize, FrogImgSize, true, true);
+		waterdeath[3] = new Image("file:src/main/java/Controller/waterdeath4.png", FrogImgSize, FrogImgSize, true, true);
+
+		Image[] array = new Image[4];
+		if (type == car)
+			array = cardeath;
+		if (type == water)
+			array = waterdeath;
 			if ((now) % 15 == 0) {
 				this.DeathAnimationTime++;
 			}
@@ -175,19 +174,19 @@ public class Animal extends Actor {
 				setImage(array[3]);
 			}
 			if (DeathAnimationTime == 13) {
+				this.lives -= 1;
+				frogReposition();
+				intersectCar = false;
+				intersectWater = false;
 				this.DeathAnimationTime = 0;
 				setImage(frog[0]);
 				death = false;
-				frogReposition();
-				this.lives -= 1;
-				intersectC = false;
-				intersectW = false;
+
+
 			}
+
 		}
 
-
-
-	
 	public void checkIsFrogAtTheEdge() {
 		if (getY()<0 || getY()>800) {
 			setY(FrogPositionY);	
@@ -201,11 +200,6 @@ public class Animal extends Actor {
 			move(0, movementY*2);
 			
 		}
-	}
-
-	public void IntersectCar(long now) {
-		death = true;
-		frogDeath(now, "car");
 	}
 
 	public void IntersectLongLog() {
@@ -223,7 +217,7 @@ public class Animal extends Actor {
 		move(-1,0);
 	}
 	
-	public void IntersectWetTurtle(long now) {
+	public void intersectWateretTurtle(long now) {
 		death = true;
 //		frogDeath(now, "water");
 
@@ -251,7 +245,7 @@ public class Animal extends Actor {
 				getIntersectingObjects(Truck.class).size() >= 1 ||
 				getIntersectingObjects(LongTruck.class).size() >= 1)
 				{
-					intersectC = true;
+					intersectCar = true;
 				}
 
 			else if (getIntersectingObjects(Log.class).size() >= 1 && !death) {
@@ -264,7 +258,7 @@ public class Animal extends Actor {
 			
 			else if (getIntersectingObjects(Turtle.class).size() >= 1) {
 				if (getIntersectingObjects(Turtle.class).get(0).isSunk()) {
-					intersectW = true;
+					intersectWater = true;
 				} else {
 					IntersectTurtle();
 				}
@@ -275,17 +269,17 @@ public class Animal extends Actor {
 				}
 			
 			else if (getY() < waterPositionY){
-				intersectW = true;
+				intersectWater = true;
 
 			}
 			getlives();
 			}
-			checkintersect(intersectC, intersectW ,now);
+			CheckIntersect(intersectCar, intersectWater, now);
 		}
-	public void checkintersect(boolean intersectC, boolean intersectW, long now) {
-			if(intersectC)
+	public void CheckIntersect(boolean intersectCar, boolean intersectWater, long now) {
+			if(intersectCar)
 				frogDeath(now, "car");
-			if(intersectW)
+			if(intersectWater)
 				frogDeath(now, "water");
 		}
 
