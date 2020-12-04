@@ -20,10 +20,15 @@ public class Log extends Actor {
 		speed = s;
 		
 	}
-	
+
+	public double Log(){
+		return speed;
+	}
+
 	public boolean isMoving() {
 		return speed < 0;
 	}
+
 }
 
 

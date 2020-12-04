@@ -8,7 +8,7 @@ public class Digit extends Actor{
 	Image digit;
 	@Override
 	public void act(long now) {
-		// TODO Auto-generated method stub
+
 		
 	}
 	

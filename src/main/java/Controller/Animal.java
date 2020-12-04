@@ -46,7 +46,10 @@ public class Animal extends Actor {
 	public int DeathAnimationTime = 0;
 	double w = 800;
 	ArrayList<End> inter = new ArrayList<End>();
-	
+	public int totalscore;
+	public int frogLevel = 1;
+	LevelInfo frogSpeed = new LevelInfo();
+
 	
 	
 	public Animal() {
@@ -71,61 +74,60 @@ public class Animal extends Actor {
 	}
 
 		public void keyListener() {
-		setOnKeyPressed(new EventHandler<KeyEvent>() {
-			public void handle(KeyEvent event) {
-				if(death) {}
-				else 	{
-				if (event.getCode() == KeyCode.W || event.getCode() == KeyCode.UP)
-				{
-					move(0, -movementY);
-					setImage(frogImg(4));
-				}
-				
-				if (event.getCode() == KeyCode.A || event.getCode() == KeyCode.LEFT)
-				{
-					move(-movementX, 0);
-					setImage(frogImg(5));
-				}
-				
-				if (event.getCode() == KeyCode.S || event.getCode() == KeyCode.DOWN)
-				{
-					move(0, movementY);
-					setImage(frogImg(6));
-				}
-				
-				if (event.getCode() == KeyCode.D || event.getCode() == KeyCode.RIGHT)
-				{
-					move(movementX, 0);
-					setImage(frogImg(7));
-				}
+		setOnKeyPressed(event -> {
+			if(death) {}
+			else 	{
+			if (event.getCode() == KeyCode.W || event.getCode() == KeyCode.UP)
+			{
+				move(0, -movementY);
+				setImage(frogImg(4));
+				changeScore = true;
+				points += 10;
 
-			}	
-				}
-		});
-		setOnKeyReleased(new EventHandler<KeyEvent>() {
-			public void handle(KeyEvent event) {
-			if (death) {}
-				else {
-				if (event.getCode() == KeyCode.W || event.getCode() == KeyCode.UP) {	  
-						changeScore = true;
-						points+=10;
-					setImage(frogImg(0));
-						move(0, -movementY);
-	            }
-				if (event.getCode() == KeyCode.A || event.getCode() == KeyCode.LEFT)  {	            	
-	            	 move(-movementX, 0);
-					setImage(frogImg(1));
-	            }
-	            if (event.getCode() == KeyCode.S || event.getCode() == KeyCode.DOWN) {	            	
-	            	 move(0, movementY);
-					setImage(frogImg(2));
-	            }
-	            if (event.getCode() == KeyCode.D || event.getCode() == KeyCode.RIGHT) {	            	
-	            	 move(movementX, 0);
-					setImage(frogImg(3));
-	            }
-	        }
 			}
+
+			if (event.getCode() == KeyCode.A || event.getCode() == KeyCode.LEFT)
+			{
+				move(-movementX, 0);
+				setImage(frogImg(5));
+			}
+
+			if (event.getCode() == KeyCode.S || event.getCode() == KeyCode.DOWN)
+			{
+				move(0, movementY);
+				setImage(frogImg(6));
+			}
+
+			if (event.getCode() == KeyCode.D || event.getCode() == KeyCode.RIGHT)
+			{
+				move(movementX, 0);
+				setImage(frogImg(7));
+			}
+
+		}
+			});
+		setOnKeyReleased(event -> {
+		if (death) {}
+			else {
+			if (event.getCode() == KeyCode.W || event.getCode() == KeyCode.UP) {
+				changeScore = true;
+				points+=10;
+				setImage(frogImg(0));
+				move(0, -movementY);
+			}
+			if (event.getCode() == KeyCode.A || event.getCode() == KeyCode.LEFT)  {
+				 move(-movementX, 0);
+				setImage(frogImg(1));
+			}
+			if (event.getCode() == KeyCode.S || event.getCode() == KeyCode.DOWN) {
+				 move(0, movementY);
+				setImage(frogImg(2));
+			}
+			if (event.getCode() == KeyCode.D || event.getCode() == KeyCode.RIGHT) {
+				 move(movementX, 0);
+				setImage(frogImg(3));
+			}
+		}
 		});
 	}
 		
@@ -139,7 +141,7 @@ public class Animal extends Actor {
 		String water = "water";
 		death = true;
 		changeScore = true;
-		points -= 50;
+
 
 		final Image[] cardeath = new Image[4];
 		cardeath[0] = new Image("file:src/main/java/Controller/cardeath1.png", FrogImgSize, FrogImgSize, true, true);
@@ -164,16 +166,16 @@ public class Animal extends Actor {
 			if (DeathAnimationTime == 1) {
 				setImage(array[0]);
 			}
-			if (DeathAnimationTime == 4) {
+			if (DeathAnimationTime == 3) {
 				setImage(array[1]);
 			}
-			if (DeathAnimationTime == 7) {
+			if (DeathAnimationTime == 5) {
 				setImage(array[2]);
 			}
-			if (DeathAnimationTime == 10) {
+			if (DeathAnimationTime == 7) {
 				setImage(array[3]);
 			}
-			if (DeathAnimationTime == 13) {
+			if (DeathAnimationTime == 9) {
 				this.lives -= 1;
 				frogReposition();
 				intersectCar = false;
@@ -181,6 +183,7 @@ public class Animal extends Actor {
 				this.DeathAnimationTime = 0;
 				setImage(frog[0]);
 				death = false;
+				points-= 20;
 
 
 			}
@@ -203,26 +206,20 @@ public class Animal extends Actor {
 	}
 
 	public void IntersectLongLog() {
-		move(-2, 0);
+		move(frogSpeed.frogSpeed(frogLevel, 1), 0);
 	}
 
 	public void IntersectLog() {
-			move (.75,0);
+		move(frogSpeed.frogSpeed(frogLevel, 0), 0);
 	}
 	
 
 	
 	
 	public void IntersectTurtle() {
-		move(-1,0);
+		move(frogSpeed.frogSpeed(frogLevel, 2), 0);
 	}
-	
-	public void intersectWateretTurtle(long now) {
-		death = true;
-//		frogDeath(now, "water");
 
-	}
-	
 	public void IntersectEnd() {
 		if (getIntersectingObjects(End.class).get(0).isEnd()) {
 			this.end--;
@@ -238,24 +235,23 @@ public class Animal extends Actor {
 	
 	@Override
 	public void act(long now) {
-		System.out.println(DeathAnimationTime);
+
 		checkIsFrogAtTheEdge();
-		if(getStop() == false) {
 			if (getIntersectingObjects(Car.class).size() >= 1 ||
 				getIntersectingObjects(Truck.class).size() >= 1 ||
 				getIntersectingObjects(LongTruck.class).size() >= 1)
 				{
-					intersectCar = true;
+//					intersectCar = true;
 				}
 
 			else if (getIntersectingObjects(Log.class).size() >= 1 && !death) {
 				IntersectLog();
 			}
-			
+
 			else if (getIntersectingObjects(LongLog.class).size() >= 1 && !death) {
 				IntersectLongLog();
 			}
-			
+
 			else if (getIntersectingObjects(Turtle.class).size() >= 1) {
 				if (getIntersectingObjects(Turtle.class).get(0).isSunk()) {
 					intersectWater = true;
@@ -263,17 +259,16 @@ public class Animal extends Actor {
 					IntersectTurtle();
 				}
 			}
-			else if (getIntersectingObjects(End.class).size() >= 1) {
-				
+			 else if (getIntersectingObjects(End.class).size() >= 1) {
+
 					IntersectEnd();
 				}
-			
-			else if (getY() < waterPositionY){
-				intersectWater = true;
-
-			}
+//
+//			else if (getY() < waterPositionY) {
+//				intersectWater = true;
+//			}
 			getlives();
-			}
+
 			CheckIntersect(intersectCar, intersectWater, now);
 		}
 	public void CheckIntersect(boolean intersectCar, boolean intersectWater, long now) {
@@ -284,6 +279,7 @@ public class Animal extends Actor {
 		}
 
 	public boolean getStop() {
+
 		return end == 5;
 	}
 	
@@ -292,10 +288,10 @@ public class Animal extends Actor {
 	}
 	
 	public boolean changeScore() {
-		if(changeScore == true) {
+		if (changeScore){
 			changeScore = false;
-			return true;
-		}
+		return true;
+	}
 		return false;
 	}
 	
@@ -308,9 +304,12 @@ public class Animal extends Actor {
 	}
 
 	public void reset(){
-			frogReposition();
-			lives = 5;
-			end = 0;
-			this.points = points;
+		frogReposition();
+		lives = 5;
+		end = 0;
+		totalscore = this.points;
+
 	}
+
+
 }

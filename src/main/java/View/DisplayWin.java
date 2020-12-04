@@ -1,5 +1,6 @@
 package View;
 
+import Controller.Animal;
 import Controller.MyStage;
 import Model.BackgroundImage;
 import javafx.event.EventHandler;
@@ -20,7 +21,9 @@ public class DisplayWin {
     Stage winStage;
     Scene winScene;
     MyStage winPane;
+    Animal frog;
 
+    int points;
     public DisplayWin() {
         winPane = new MyStage();
         winStage = new Stage();
@@ -30,6 +33,8 @@ public class DisplayWin {
         createBackground();
         Text("Press SpaceBar to return to Menu", 46, 160);
         keyListener();
+        DisplayGame game = new DisplayGame();
+        System.out.println();
 
     }
 
@@ -72,6 +77,11 @@ public class DisplayWin {
                 }
             }
         });
+    }
+
+    public void setScore(int point)
+    {
+        this.points += point;
     }
 
 
