@@ -34,10 +34,11 @@ public class FrogScore{
         }
     }
 
-    public void addScore(int x) throws FileNotFoundException {
+    public void addScore(int score) throws FileNotFoundException {
+
         scoreList = new ArrayList<>();
         Scanner reader = new Scanner(scoreFile);
-
+        scoreList.add(score);
         while(reader.hasNextLine()) {
             String data = reader.nextLine();
             scoreList.add(Integer.parseInt(data));
@@ -66,11 +67,11 @@ public class FrogScore{
         }
 
         public boolean isHigher(int score){
-            for (int i = 0; i < scoreList.size(); i++) {
-                if (score >= scoreList.get(i) )
-                    return true;
-            }
-            return false;
+//            for (int i = 0; i < scoreList.size(); i++) {
+//                if (score >= scoreList.get(i) )
+//                    return true;
+//            }
+               return false;
         }
 
         public List <Integer> getList(){

@@ -1,16 +1,21 @@
 package View;
 
 import Controller.Animal;
+import Controller.FrogScore;
 import Controller.World;
 import Model.BackgroundImage;
+import com.sun.prism.impl.Disposer;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 
 public class DisplayWin {
@@ -19,6 +24,7 @@ public class DisplayWin {
     Scene winScene;
     World winPane;
     Animal frog;
+    FrogScore frogScore;
 
     int points;
     public DisplayWin(int score) {
@@ -31,6 +37,7 @@ public class DisplayWin {
         createText("Press SpaceBar to return to Menu", 46, 160);
         createText("Your Score is\n\n\t\t" + score, 200, 350);
         keyListener();
+        setAlert(score);
 
     }
 
@@ -76,16 +83,28 @@ public class DisplayWin {
         });
     }
 
-    public int setScore(int point)
-    {
-        this.points = point;
-        return this.points;
+    public void RecordScore(int score){
+        frogScore = new FrogScore();
+        try
+        {
+            frogScore.createFile();
+            if(frogScore.isHigher(score))
+                frogScore.addScore(score);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.print("File not created");
+        }
     }
 
-    public int getScore()
-    {
-        return this.points;
-    }
+    public void setAlert(int score){
+        RecordScore(score);
+        Alert winAlert = new Alert(Alert.AlertType.INFORMATION);
+        winAlert.setTitle("Scoreboard");
+        winAlert.setHeaderText("Your Score: " + score);
+        winAlert.setContentText("Scoreboard: " + frogScore.getList());
+        winAlert.show();
 
+
+    }
 
 }

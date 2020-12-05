@@ -56,16 +56,12 @@ public class DisplayGameOver {
     }
 
     public void keyListener(){
-        gameoverScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
+        gameoverScene.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.SPACE){
+                gameoverStage.hide();
+                DisplayGame game = new DisplayGame();
+                game.createGame();
 
-            public void handle(KeyEvent event) {
-                if (event.getCode() == KeyCode.SPACE){
-                    gameoverStage.hide();
-                    DisplayGame game = new DisplayGame();
-                    game.createGame();
-
-                }
             }
         });
     }

@@ -16,7 +16,7 @@ public class Music {
 
     public void playMusic() {
         String musicFile = MUSIC_PATH;
-        Media sound = new Media(new File(MUSIC_PATH).toURI().toString());
+        Media sound = new Media(new File(musicFile).toURI().toString());
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.play();

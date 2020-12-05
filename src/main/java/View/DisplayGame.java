@@ -223,7 +223,6 @@ public class DisplayGame {
 				totalpoints += frog.getPoints();
 				gameStage.hide();
 				DisplayWin displayWin = new DisplayWin(totalpoints);
-				displayWin.setScore(totalpoints);
 				displayWin.createStage();
 				timer.stop();
 				totalpoints += frog.getPoints();

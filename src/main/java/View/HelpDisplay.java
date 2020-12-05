@@ -45,15 +45,10 @@ public class HelpDisplay {
 	{
 		QuitButton quitButton = new QuitButton(5, 700);
 		helpPane.add(quitButton);
-		quitButton.setOnAction(new EventHandler<ActionEvent>()
-		{
-			@Override
-			public void handle(ActionEvent event)
-			{
-				helpStage.hide();
-				MenuDisplay menu = new MenuDisplay();
-				menu.createMenuStage();
-			}
+		quitButton.setOnAction(event -> {
+			helpStage.hide();
+			MenuDisplay menu = new MenuDisplay();
+			menu.createMenuStage();
 		});
 	}
 	

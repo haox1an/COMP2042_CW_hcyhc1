@@ -1,9 +1,6 @@
 package View;
 
-import Controller.StartButton;
-import Controller.HelpButton;
-import Controller.World;
-import Controller.QuitButton;
+import Controller.*;
 import Model.BackgroundImage;
 import Model.Music;
 import javafx.application.Platform;
@@ -21,6 +18,8 @@ public class MenuDisplay {
 	StartButton startButton;
 	HelpButton helpButton;
 	QuitButton quitButton;
+
+
 	
 	
 	public MenuDisplay() {
@@ -104,8 +103,9 @@ public class MenuDisplay {
 	}
 	
 	public void addMusic() {
-		music.playMusic();
+//		music.playMusic();
 	}
+
 	
 	
 	
