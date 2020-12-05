@@ -1,7 +1,7 @@
 package View;
 
 import Controller.Animal;
-import Controller.MyStage;
+import Controller.World;
 import Model.BackgroundImage;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -11,21 +11,18 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.event.EventHandler;
 
 
 public class DisplayWin {
 
     Stage winStage;
     Scene winScene;
-    MyStage winPane;
+    World winPane;
     Animal frog;
 
     int points;
     public DisplayWin(int score) {
-        winPane = new MyStage();
+        winPane = new World();
         winStage = new Stage();
         winScene = new Scene(winPane, 600,800);
         winStage.setScene(winScene);

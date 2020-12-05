@@ -1,6 +1,6 @@
 package View;
 
-import Controller.MyStage;
+import Controller.World;
 import Model.BackgroundImage;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -15,14 +15,14 @@ public class DisplayGameOver {
 
     Scene gameoverScene;
     Stage gameoverStage;
-    MyStage gameoverPane;
+    World gameoverPane;
 
     Font font;
     BackgroundImage gameoverBackground;
 
     public DisplayGameOver(int scores){
         System.out.println(scores);
-        gameoverPane  = new MyStage();
+        gameoverPane  = new World();
         gameoverScene = new Scene(gameoverPane, 600, 800);
         gameoverStage = new Stage();
         gameoverStage.setScene(gameoverScene);

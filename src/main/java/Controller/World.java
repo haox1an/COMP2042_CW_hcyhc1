@@ -16,7 +16,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
 
-public abstract class World extends Pane {
+public class World extends Pane {
     private AnimationTimer timer;
     
     public World() {
@@ -87,5 +87,4 @@ public abstract class World extends Pane {
         return objectArray;
     }
 
-    public abstract void act(long now);
 }

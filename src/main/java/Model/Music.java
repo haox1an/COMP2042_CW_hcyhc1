@@ -21,4 +21,17 @@ public class Music {
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.play();
     }
+
+    public void stopMusic(){
+        mediaPlayer.stop();
+
+    }
+
+    public void muteMusic(){
+        mediaPlayer.setMute(true);
+    }
+
+    public void unmuteMusic(){
+        mediaPlayer.setMute(false);
+    }
 }

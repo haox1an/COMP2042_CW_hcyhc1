@@ -15,9 +15,10 @@ import javafx.stage.Stage;
 public class DisplayGame {
 	AnimationTimer timer;
 	Scene gameScene;
-	MyStage gamePane;
+	World gamePane;
 	Animal frog;
 	Stage gameStage;
+	Music music;
 	DisplayGameOver displayGameOver;
 	final int GridY = 55;
 	int level = 9;
@@ -27,7 +28,7 @@ public class DisplayGame {
 
 	public DisplayGame() {
 
-		gamePane = new MyStage();
+		gamePane = new World();
 		gameScene = new Scene(gamePane, 600, 800);
 		gameStage = new Stage();
 		gameStage.setScene(gameScene);
@@ -161,7 +162,7 @@ public class DisplayGame {
 	}
 
 	public void addMusic() {
-		gamePane.playMusic();
+		music.playMusic();
 	}
 
 

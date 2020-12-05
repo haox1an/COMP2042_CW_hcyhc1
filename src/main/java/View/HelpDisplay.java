@@ -1,6 +1,6 @@
 package View;
 
-import Controller.MyStage;
+import Controller.World;
 import Controller.QuitButton;
 import Model.BackgroundImage;
 import javafx.event.ActionEvent;
@@ -11,7 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class HelpDisplay {
-		MyStage helpPane;
+		World helpPane;
 		Scene helpScene;
 		ImageView instructions;
 		Stage helpStage;
@@ -20,7 +20,7 @@ public class HelpDisplay {
 		
 		helpStage = new Stage();
 		
-		helpPane = new MyStage();
+		helpPane = new World();
 		helpScene = new Scene(helpPane, 600, 800);
 		helpStage.setScene(helpScene);
 		helpStage.show();

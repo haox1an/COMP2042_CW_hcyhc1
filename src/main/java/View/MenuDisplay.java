@@ -2,9 +2,10 @@ package View;
 
 import Controller.StartButton;
 import Controller.HelpButton;
-import Controller.MyStage;
+import Controller.World;
 import Controller.QuitButton;
 import Model.BackgroundImage;
+import Model.Music;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,9 +13,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class MenuDisplay {
-	MyStage mainPane;
+	World mainPane;
 	Scene menuScene;
 	Stage menuStage;
+	Music music;
 	
 	StartButton startButton;
 	HelpButton helpButton;
@@ -23,7 +25,7 @@ public class MenuDisplay {
 	
 	public MenuDisplay() {
 		
-		mainPane = new MyStage();
+		mainPane = new World();
 		menuScene = new Scene(mainPane, 600, 800);
 		menuStage = new Stage();
 		menuStage.setScene(menuScene);
@@ -102,7 +104,7 @@ public class MenuDisplay {
 	}
 	
 	public void addMusic() {
-		mainPane.playMusic();
+		music.playMusic();
 	}
 	
 	
