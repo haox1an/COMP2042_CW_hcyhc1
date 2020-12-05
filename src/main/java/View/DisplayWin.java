@@ -24,17 +24,16 @@ public class DisplayWin {
     Animal frog;
 
     int points;
-    public DisplayWin() {
+    public DisplayWin(int score) {
         winPane = new MyStage();
         winStage = new Stage();
         winScene = new Scene(winPane, 600,800);
         winStage.setScene(winScene);
         winStage.setTitle("You Won!");
         createBackground();
-        Text("Press SpaceBar to return to Menu", 46, 160);
+        createText("Press SpaceBar to return to Menu", 46, 160);
+        createText("Your Score is\n\n\t\t" + score, 200, 350);
         keyListener();
-        DisplayGame game = new DisplayGame();
-        System.out.println();
 
     }
 
@@ -53,7 +52,7 @@ public class DisplayWin {
     }
 
 
-    public void Text(String text, int Xpos, int Ypos){
+    public void createText(String text, int Xpos, int Ypos){
         Text winText = new Text();
         Font font = Font.loadFont("file:src/main/resources/Font/ARCADECLASSIC.ttf", 33);
         winText.setText(text);
@@ -62,8 +61,9 @@ public class DisplayWin {
         winText.setY(Ypos);
         winText.setFont(font);
         winPane.add(winText);
-
     }
+
+
 
     public void keyListener(){
         winScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -79,9 +79,15 @@ public class DisplayWin {
         });
     }
 
-    public void setScore(int point)
+    public int setScore(int point)
     {
-        this.points += point;
+        this.points = point;
+        return this.points;
+    }
+
+    public int getScore()
+    {
+        return this.points;
     }
 
 

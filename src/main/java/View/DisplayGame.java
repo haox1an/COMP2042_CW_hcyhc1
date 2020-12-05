@@ -20,9 +20,10 @@ public class DisplayGame {
 	Stage gameStage;
 	DisplayGameOver displayGameOver;
 	final int GridY = 55;
-	int level = 1;
+	int level = 9;
 	ScoreBar bar;
 	int totalpoints;
+	int Maxlevel = 9;
 
 	public DisplayGame() {
 
@@ -37,7 +38,6 @@ public class DisplayGame {
 		addEnd();
 		addQuitButton();
 		timerstart();
-
 
 	}
 
@@ -205,8 +205,9 @@ public class DisplayGame {
 
 	public void showGameOver() {
 		if (frog.gameOver()) {
+			totalpoints += frog.getPoints();
 			gameStage.hide();
-			displayGameOver = new DisplayGameOver();
+			displayGameOver = new DisplayGameOver(totalpoints);
 			displayGameOver.createStage();
 			timer.stop();
 		}
@@ -215,13 +216,16 @@ public class DisplayGame {
 	}
 
 	public void showWinning() {
+
 		if (frog.getStop()) {
 			if (level > 9) {
+				totalpoints += frog.getPoints();
 				gameStage.hide();
-				DisplayWin displayWin = new DisplayWin();
+				DisplayWin displayWin = new DisplayWin(totalpoints);
 				displayWin.setScore(totalpoints);
 				displayWin.createStage();
 				timer.stop();
+				totalpoints += frog.getPoints();
 			}
 			else {
 				level++;
@@ -232,6 +236,7 @@ public class DisplayGame {
 	}
 
 	public void changeLv(int level){
+		totalpoints += frog.getPoints();
 		frog.reset();
 		gamePane.getChildren().clear();
 		createBackground();
@@ -239,10 +244,12 @@ public class DisplayGame {
 		addFrog();
 		addEnd();
 		addQuitButton();
+
 	}
 
-	public void getTotalscore(){
+	public int getTotalscore(){
 		 totalpoints += frog.getPoints();
+		return totalpoints;
 	}
 
 	public void gameTimer() {
@@ -254,13 +261,13 @@ public class DisplayGame {
 				for (Actor anActor : actors) {
 					anActor.act(now);
 				}
-				System.out.println(frog.frogLevel);
-
 				showWinning();
 				showGameOver();
 				addLives();
 				addLevel();
-				System.out.println(frog.getPoints());
+				System.out.println(totalpoints);
+//				System.out.println(frog.getPoints);
+
 
 
 

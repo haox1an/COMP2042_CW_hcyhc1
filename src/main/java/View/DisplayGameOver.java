@@ -20,14 +20,16 @@ public class DisplayGameOver {
     Font font;
     BackgroundImage gameoverBackground;
 
-    public DisplayGameOver(){
+    public DisplayGameOver(int scores){
+        System.out.println(scores);
         gameoverPane  = new MyStage();
         gameoverScene = new Scene(gameoverPane, 600, 800);
         gameoverStage = new Stage();
         gameoverStage.setScene(gameoverScene);
         gameoverStage.setTitle("Game Over");
         createBackground();
-        createText("PRESS SPACEBAR TO PLAY AGAIN 12", 25, 750);
+        createText("PRESS SPACEBAR TO PLAY AGAIN", 25, 750);
+        createText("Your Score is\n\n\t\t\t" + scores, 170, 350);
         keyListener();
         }
 

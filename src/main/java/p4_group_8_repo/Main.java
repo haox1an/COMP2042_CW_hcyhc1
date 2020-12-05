@@ -24,8 +24,8 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		MenuDisplay menu = new MenuDisplay();
-		DisplayGameOver game = new DisplayGameOver();
-		primaryStage = menu.getStage();
+		DisplayGameOver game = new DisplayGameOver(23);
+		primaryStage = game.getStage();
 		primaryStage.show();
 		
 	}
