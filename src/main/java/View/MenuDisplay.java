@@ -10,7 +10,7 @@ public class MenuDisplay {
 	World mainPane;
 	Scene menuScene;
 	Stage menuStage;
-	Music music;
+	Music music = new Music();
 	
 	StartButton startButton;
 	HelpButton helpButton;
@@ -58,6 +58,7 @@ public class MenuDisplay {
 			menuStage.hide();
 			DisplayGame game = new DisplayGame();
 			game.createGame();
+			music.stopMusic();
 		});
 		}
 	
@@ -70,6 +71,7 @@ public class MenuDisplay {
 			menuStage.hide();
 			HelpDisplay help = new HelpDisplay();
 			help.createHelpStage();
+			music.stopMusic();
 		});
 	}
 	
@@ -83,7 +85,8 @@ public class MenuDisplay {
 	}
 	
 	public void addMusic() {
-//		music.playMusic();
+
+		music.playMusic();
 	}
 
 	
