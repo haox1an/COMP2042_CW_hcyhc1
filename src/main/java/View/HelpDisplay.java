@@ -1,10 +1,8 @@
 package View;
 
 import Controller.World;
-import Controller.QuitButton;
+import Model.QuitButton;
 import Model.BackgroundImage;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

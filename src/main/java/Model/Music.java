@@ -9,7 +9,7 @@ import javafx.util.Duration;
 public class Music {
 
     MediaPlayer mediaPlayer;
-    private String MUSIC_PATH = "file:src/main/resources/Img/FroggerMedia.mp3";
+    private String MUSIC_PATH = "src/main/resources/Media/FroggerMedia.mp3";
 
     public Music() {
 
@@ -22,6 +22,7 @@ public class Music {
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.play();
     }
+    
 
     public void stopMusic(){
         mediaPlayer.stop();

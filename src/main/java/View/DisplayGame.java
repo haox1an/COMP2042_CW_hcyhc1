@@ -7,8 +7,6 @@ import Controller.*;
 import Model.*;
 
 import javafx.animation.AnimationTimer;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -34,14 +32,12 @@ public class DisplayGame {
 		gameStage.setScene(gameScene);
 		gameStage.setTitle("Frogger");
 		createBackground();
-		setLevel(5);
+		setLevel(1);
 		addObstacles(level);
 		addFrog();
 		addEnd();
 		addQuitButton();
 		timerstart();
-
-
 	}
 
 	public void setLevel(int level){
@@ -66,7 +62,7 @@ public class DisplayGame {
 //		gamePane.add(new Truck(300, lane[1], 3));
 
 		for (i = 0; i < info.ObjNum(lvl,1); i++) {
-			gamePane.add(new Truck(0 + (i * 500), lane[1], info.ObjSpeed(lvl, 0)));
+			gamePane.add(new Truck(0 + (i * 330), lane[1], info.ObjSpeed(lvl, 1)));
 		}
 
 
@@ -75,7 +71,7 @@ public class DisplayGame {
 //		gamePane.add(new Car(300, lane[2], 1));
 //		gamePane.add(new Car(500, lane[2], 1));
 		for (i = 0; i < info.ObjNum(lvl,2); i++) {
-			gamePane.add(new Car(0 + (i * 100), lane[2], info.ObjSpeed(lvl, 2)));
+			gamePane.add(new Car(0 + (i * 230), lane[2], info.ObjSpeed(lvl, 2)));
 		}
 
 //
@@ -84,7 +80,7 @@ public class DisplayGame {
 //		gamePane.add(new LongTruck(100, lane[3], -1));
 //		gamePane.add(new Car(500, lane[3], -1));
 		for (i = 0; i < info.ObjNum(lvl,3); i++) {
-			gamePane.add(new LongTruck(0 + (i * 300), lane[3], info.ObjSpeed(lvl, 3)));
+			gamePane.add(new LongTruck(0 + (i * 450), lane[3], info.ObjSpeed(lvl, 3)));
 		}
 
 //
@@ -100,7 +96,7 @@ public class DisplayGame {
 //		gamePane.add(new Turtle(300, lane[6], -1));
 //		gamePane.add(new Turtle(700, lane[6], -1));
 		for (i = 0; i < info.ObjNum(lvl,5); i++) {
-			gamePane.add(new Turtle(0 + (i * 200), lane[6], info.ObjSpeed(lvl, 5)));
+			gamePane.add(new Turtle(0 + (i * 300), lane[6], info.ObjSpeed(lvl, 7)));
 		}
 
 //
@@ -109,7 +105,7 @@ public class DisplayGame {
 //		gamePane.add(new Log(270, lane[7], 0.75));
 //		gamePane.add(new Log(490, lane[7], 0.75));
 		for (i = 0; i < info.ObjNum(lvl,6); i++) {
-			gamePane.add(new Log(0 + (i * 200), lane[7], info.ObjSpeed(lvl, 6)));
+			gamePane.add(new Log(0 + (i * 220), lane[7], info.ObjSpeed(lvl, 6)));
 		}
 
 //		//row7
@@ -117,14 +113,14 @@ public class DisplayGame {
 //		gamePane.add(new Turtle(400, lane[8], -1));
 //		gamePane.add(new Turtle(200, lane[8], -1));
 		for (i = 0; i < info.ObjNum(lvl,7); i++) {
-			gamePane.add(new Turtle(0 + (i * 200), lane[8], info.ObjSpeed(lvl, 7)));
+			gamePane.add(new Turtle(0 + (i * 250), lane[8], info.ObjSpeed(lvl, 7)));
 		}
 //
 //		//row8
 //		gamePane.add(new LongLog(0, lane[9], -2));
 //		gamePane.add(new LongLog(400, lane[9], -2));
 		for (i = 0; i < info.ObjNum(lvl,8); i++) {
-			gamePane.add(new LongLog(0 + (i * 200), lane[9], info.ObjSpeed(lvl, 8)));
+			gamePane.add(new LongLog(0 + (i * 350), lane[9], info.ObjSpeed(lvl, 8)));
 		}
 //
 //		//row9
@@ -132,7 +128,7 @@ public class DisplayGame {
 //		gamePane.add(new Log(220, lane[10]+7, 0.75));
 //		gamePane.add(new Log(440, lane[10]+7, 0.75));
 		for (i = 0; i < info.ObjNum(lvl,9); i++) {
-			gamePane.add(new Log(0 + (i * 200), lane[10], info.ObjSpeed(lvl, 9)));
+			gamePane.add(new Log(0 + (i * 250), lane[10], info.ObjSpeed(lvl, 9)));
 		}
 	}
 
@@ -157,11 +153,6 @@ public class DisplayGame {
 		frog = new Animal();
 		gamePane.add(frog);
 	}
-
-	public void addMusic() {
-		music.playMusic();
-	}
-
 
 	public void addLevel(){
 		gamePane.add(new Level(0));
@@ -204,7 +195,7 @@ public class DisplayGame {
 	public void timerstart() {
 		gameTimer();
 		timer.start();
-		music.playMusic();
+//		music.playMusic();
 	}
 
 	public void showGameOver() {
@@ -214,13 +205,13 @@ public class DisplayGame {
 			displayGameOver = new DisplayGameOver(totalpoints);
 			displayGameOver.createStage();
 			timer.stop();
+			music.stopMusic();
 		}
 
 
 	}
 
 	public void showWinning() {
-
 		if (frog.getStop()) {
 			if (level > 9) {
 				setTotalscore(frog.getPoints());
@@ -228,7 +219,7 @@ public class DisplayGame {
 				DisplayWin displayWin = new DisplayWin(totalpoints);
 				displayWin.createStage();
 				timer.stop();
-				totalpoints += frog.getPoints();
+				music.stopMusic();
 			}
 			else {
 				level++;
@@ -247,7 +238,6 @@ public class DisplayGame {
 		addFrog();
 		addEnd();
 		addQuitButton();
-
 	}
 
 
@@ -263,7 +253,6 @@ public class DisplayGame {
 				showGameOver();
 				addLives();
 				addLevel();
-
 			}
 		};
 	}

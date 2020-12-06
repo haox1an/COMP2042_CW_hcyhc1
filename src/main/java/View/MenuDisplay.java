@@ -1,11 +1,8 @@
 package View;
 
 import Controller.*;
-import Model.BackgroundImage;
-import Model.Music;
+import Model.*;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 

@@ -132,16 +132,16 @@ public class Animal extends Actor {
 		death = true;
 
 		final Image[] cardeath = new Image[4];
-		cardeath[0] = new Image("file:src/main/java/Controller/cardeath1.png", FrogImgSize, FrogImgSize, true, true);
-		cardeath[1] = new Image("file:src/main/java/Controller/cardeath2.png", FrogImgSize, FrogImgSize, true, true);
-		cardeath[2] = new Image("file:src/main/java/Controller/cardeath3.png", FrogImgSize, FrogImgSize, true, true);
-		cardeath[3] = new Image("file:src/main/java/Controller/cardeath3.png", FrogImgSize, FrogImgSize, true, true);
+		cardeath[0] = new Image("file:src/main/resources/Img/cardeath1.png", FrogImgSize, FrogImgSize, true, true);
+		cardeath[1] = new Image("file:src/main/resources/Img/cardeath2.png", FrogImgSize, FrogImgSize, true, true);
+		cardeath[2] = new Image("file:src/main/resources/Img/cardeath3.png", FrogImgSize, FrogImgSize, true, true);
+		cardeath[3] = new Image("file:src/main/resources/Img/cardeath3.png", FrogImgSize, FrogImgSize, true, true);
 
 		final Image[] waterdeath = new Image[4];
-		waterdeath[0] = new Image("file:src/main/java/Controller/waterdeath1.png", FrogImgSize, FrogImgSize, true, true);
-		waterdeath[1] = new Image("file:src/main/java/Controller/waterdeath2.png", FrogImgSize, FrogImgSize, true, true);
-		waterdeath[2] = new Image("file:src/main/java/Controller/waterdeath3.png", FrogImgSize, FrogImgSize, true, true);
-		waterdeath[3] = new Image("file:src/main/java/Controller/waterdeath4.png", FrogImgSize, FrogImgSize, true, true);
+		waterdeath[0] = new Image("file:src/main/resources/Img/waterdeath1.png", FrogImgSize, FrogImgSize, true, true);
+		waterdeath[1] = new Image("file:src/main/resources/Img/waterdeath2.png", FrogImgSize, FrogImgSize, true, true);
+		waterdeath[2] = new Image("file:src/main/resources/Img/waterdeath3.png", FrogImgSize, FrogImgSize, true, true);
+		waterdeath[3] = new Image("file:src/main/resources/Img/wwaterdeath4.png", FrogImgSize, FrogImgSize, true, true);
 
 		Image[] array = new Image[4];
 		if (type == car)
@@ -233,22 +233,23 @@ public class Animal extends Actor {
 				getIntersectingObjects(Truck.class).size() >= 1 ||
 				getIntersectingObjects(LongTruck.class).size() >= 1)
 				{
-					intersectCar = true;
+//					intersectCar = true;
 				}
 
 			else if (getIntersectingObjects(Log.class).size() >= 1 && !death) {
-				IntersectLog();
+				move(frogSpeed.ObjSpeed(frogLevel, 6), 0);
 			}
 
 			else if (getIntersectingObjects(LongLog.class).size() >= 1 && !death) {
-				IntersectLongLog();
+
+				move(frogSpeed.ObjSpeed(frogLevel, 8), 0);
 			}
 
 			else if (getIntersectingObjects(Turtle.class).size() >= 1) {
 				if (getIntersectingObjects(Turtle.class).get(0).isSunk()) {
 					intersectWater = true;
 				} else {
-					IntersectTurtle();
+					move(frogSpeed.ObjSpeed(frogLevel, 5), 0);
 				}
 			}
 			 else if (getIntersectingObjects(End.class).size() >= 1) {
@@ -257,7 +258,7 @@ public class Animal extends Actor {
 				}
 
 			else if (getY() < waterPositionY) {
-				intersectWater = true;
+//				intersectWater = true;
 			}
 			getlives();
 
