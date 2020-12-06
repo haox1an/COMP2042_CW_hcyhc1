@@ -1,9 +1,11 @@
 package View;
 
+import Controller.FrogScore;
 import Controller.World;
 import Model.BackgroundImage;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
@@ -16,12 +18,13 @@ public class DisplayGameOver {
     Scene gameoverScene;
     Stage gameoverStage;
     World gameoverPane;
+    FrogScore frogScore;
 
     Font font;
     BackgroundImage gameoverBackground;
 
     public DisplayGameOver(int scores){
-        System.out.println(scores);
+
         gameoverPane  = new World();
         gameoverScene = new Scene(gameoverPane, 600, 800);
         gameoverStage = new Stage();
@@ -31,6 +34,7 @@ public class DisplayGameOver {
         createText("PRESS SPACEBAR TO PLAY AGAIN", 25, 750);
         createText("Your Score is\n\n\t\t\t" + scores, 170, 350);
         keyListener();
+        setAlert(scores);
         }
 
     public void createBackground(){
@@ -68,6 +72,27 @@ public class DisplayGameOver {
 
     public Stage getStage(){
         return gameoverStage;
+    }
+
+    public void recordScore(int score){
+        frogScore = new FrogScore();
+        try
+        {
+            frogScore.createFile();
+            frogScore.addScore(score);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.print("File not created");
+        }
+    }
+
+    public void setAlert(int score){
+        recordScore(score);
+        Alert winAlert = new Alert(Alert.AlertType.INFORMATION);
+        winAlert.setTitle("Scoreboard");
+        winAlert.setHeaderText("Your Score: " + score);
+        winAlert.setContentText("Scoreboard: " + frogScore.displayScore());
+        winAlert.show();
     }
 
 

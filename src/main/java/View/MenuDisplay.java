@@ -56,16 +56,11 @@ public class MenuDisplay {
 		startButton = new StartButton( 65, 300);
 		mainPane.add(startButton);
 		
-		startButton.setOnAction(new EventHandler<ActionEvent>()
-		{
-			@Override
-			public void handle(ActionEvent event)
-				{
-					menuStage.hide();
-					DisplayGame game = new DisplayGame();
-					game.createGame();
-				}
-			});	
+		startButton.setOnAction(event -> {
+			menuStage.hide();
+			DisplayGame game = new DisplayGame();
+			game.createGame();
+		});
 		}
 	
 	public void createHelpButton() 
@@ -73,17 +68,11 @@ public class MenuDisplay {
 		helpButton = new HelpButton( 500, 700);
 		mainPane.add(helpButton);
 		
-		helpButton.setOnAction(new EventHandler<ActionEvent>()
-			{
-					
-			@Override
-			public void handle(ActionEvent event)
-			{
-				menuStage.hide();
-				HelpDisplay help = new HelpDisplay();
-				help.createHelpStage();
-			}
-		});	
+		helpButton.setOnAction(event -> {
+			menuStage.hide();
+			HelpDisplay help = new HelpDisplay();
+			help.createHelpStage();
+		});
 	}
 	
 	public void createQuitButton()
@@ -91,14 +80,7 @@ public class MenuDisplay {
 		quitButton = new QuitButton(5, 700);
 		mainPane.add(quitButton);
 		
-		quitButton.setOnAction(new EventHandler<ActionEvent>()
-		{	
-		@Override
-		public void handle(ActionEvent event)
-		{
-			Platform.exit();
-		}
-	});	
+		quitButton.setOnAction(event -> Platform.exit());
 		
 	}
 	

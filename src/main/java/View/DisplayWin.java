@@ -70,25 +70,21 @@ public class DisplayWin {
 
 
     public void keyListener(){
-        winScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                if (event.getCode() == KeyCode.SPACE){
-                    winStage.hide();
-                    MenuDisplay menu = new MenuDisplay();
-                    menu.createMenuStage();
+        winScene.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.SPACE){
+                winStage.hide();
+                MenuDisplay menu = new MenuDisplay();
+                menu.createMenuStage();
 
-                }
             }
         });
     }
 
-    public void RecordScore(int score){
+    public void recordScore(int score){
         frogScore = new FrogScore();
         try
         {
-            frogScore.createFile();
-            if(frogScore.isHigher(score))
+                frogScore.createFile();
                 frogScore.addScore(score);
         } catch (Exception e) {
             e.printStackTrace();
@@ -97,11 +93,11 @@ public class DisplayWin {
     }
 
     public void setAlert(int score){
-        RecordScore(score);
+        recordScore(score);
         Alert winAlert = new Alert(Alert.AlertType.INFORMATION);
         winAlert.setTitle("Scoreboard");
         winAlert.setHeaderText("Your Score: " + score);
-        winAlert.setContentText("Scoreboard: " + frogScore.getList());
+        winAlert.setContentText("Scoreboard: " + frogScore.displayScore());
         winAlert.show();
 
 

@@ -38,20 +38,21 @@ public class FrogScore{
 
         scoreList = new ArrayList<>();
         Scanner reader = new Scanner(scoreFile);
+        PrintWriter writer;
         scoreList.add(score);
-        while(reader.hasNextLine()) {
+        while (reader.hasNextLine()) {
             String data = reader.nextLine();
             scoreList.add(Integer.parseInt(data));
         }
-            scoreList.sort(Collections.reverseOrder());
-            scoreList = scoreList.stream().limit(5).collect(Collectors.toList());
-            PrintWriter writer = new PrintWriter(scoreFile);
+        scoreList.sort(Collections.reverseOrder());
+        scoreList = scoreList.stream().limit(5).collect(Collectors.toList());
+        writer = new PrintWriter(scoreFile);
 
-            scoreList.forEach(highscore ->{
-                writer.println(highscore.toString());
-            });
-            writer.close();
-        }
+        scoreList.forEach(highscore -> {
+            writer.println(highscore.toString());
+        });
+        writer.close();
+    }
 
 
 
@@ -67,10 +68,10 @@ public class FrogScore{
         }
 
         public boolean isHigher(int score){
-//            for (int i = 0; i < scoreList.size(); i++) {
-//                if (score >= scoreList.get(i) )
-//                    return true;
-//            }
+            for (int i = 0; i < scoreList.size(); i++) {
+                if (score >= scoreList.get(i) )
+                    return true;
+            }
                return false;
         }
 
