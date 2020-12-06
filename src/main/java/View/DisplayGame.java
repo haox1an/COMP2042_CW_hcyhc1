@@ -57,76 +57,55 @@ public class DisplayGame {
 		for (i = 0; i < info.ObjNum(lvl,0); i++) {
 			gamePane.add(new Car(100 + (i * 400), lane[0], info.ObjSpeed(lvl, 0)));
 		}
-			//row1
-//		gamePane.add(new Truck(0, lane[1], info.ObjSpeed(0,0)));
-//		gamePane.add(new Truck(300, lane[1], 3));
 
+		//row 1
 		for (i = 0; i < info.ObjNum(lvl,1); i++) {
 			gamePane.add(new Truck(0 + (i * 330), lane[1], info.ObjSpeed(lvl, 1)));
 		}
 
 
 //		//row2
-//		gamePane.add(new Car(100, lane[2], 1));
-//		gamePane.add(new Car(300, lane[2], 1));
-//		gamePane.add(new Car(500, lane[2], 1));
+
 		for (i = 0; i < info.ObjNum(lvl,2); i++) {
 			gamePane.add(new Car(0 + (i * 230), lane[2], info.ObjSpeed(lvl, 2)));
 		}
 
-//
-//
 //		//row3
-//		gamePane.add(new LongTruck(100, lane[3], -1));
-//		gamePane.add(new Car(500, lane[3], -1));
 		for (i = 0; i < info.ObjNum(lvl,3); i++) {
 			gamePane.add(new LongTruck(0 + (i * 450), lane[3], info.ObjSpeed(lvl, 3)));
 		}
 
-//
-//
-//		//row4
-//		gamePane.add(new Car(0, lane[4], -2));
+		//row4
 		for (i = 0; i < info.ObjNum(lvl,4); i++) {
 			gamePane.add(new Car(0 + (i * 200), lane[4], info.ObjSpeed(lvl, 4)));
 		}
-//
-//		//row5
-//		gamePane.add(new Turtle(500, lane[6], -1));
-//		gamePane.add(new Turtle(300, lane[6], -1));
-//		gamePane.add(new Turtle(700, lane[6], -1));
+
+		//row5
 		for (i = 0; i < info.ObjNum(lvl,5); i++) {
 			gamePane.add(new Turtle(0 + (i * 300), lane[6], info.ObjSpeed(lvl, 7)));
 		}
 
-//
-//		//row6
-//		gamePane.add(new Log(50, lane[7], 0.75));
-//		gamePane.add(new Log(270, lane[7], 0.75));
-//		gamePane.add(new Log(490, lane[7], 0.75));
+
+		//row6
+
 		for (i = 0; i < info.ObjNum(lvl,6); i++) {
 			gamePane.add(new Log(0 + (i * 220), lane[7], info.ObjSpeed(lvl, 6)));
 		}
 
 //		//row7
-//		gamePane.add(new Turtle(600, lane[8], -1));
-//		gamePane.add(new Turtle(400, lane[8], -1));
-//		gamePane.add(new Turtle(200, lane[8], -1));
+
 		for (i = 0; i < info.ObjNum(lvl,7); i++) {
 			gamePane.add(new Turtle(0 + (i * 250), lane[8], info.ObjSpeed(lvl, 7)));
 		}
 //
 //		//row8
-//		gamePane.add(new LongLog(0, lane[9], -2));
-//		gamePane.add(new LongLog(400, lane[9], -2));
+
 		for (i = 0; i < info.ObjNum(lvl,8); i++) {
 			gamePane.add(new LongLog(0 + (i * 350), lane[9], info.ObjSpeed(lvl, 8)));
 		}
 //
 //		//row9
-//		gamePane.add(new Log(0, lane[10]+7, 0.75));
-//		gamePane.add(new Log(220, lane[10]+7, 0.75));
-//		gamePane.add(new Log(440, lane[10]+7, 0.75));
+
 		for (i = 0; i < info.ObjNum(lvl,9); i++) {
 			gamePane.add(new Log(0 + (i * 250), lane[10], info.ObjSpeed(lvl, 9)));
 		}
@@ -152,6 +131,7 @@ public class DisplayGame {
 	public void addFrog() {
 		frog = new Animal();
 		gamePane.add(frog);
+		frog.setFrogLevel(level);
 	}
 
 	public void addLevel(){
@@ -253,6 +233,7 @@ public class DisplayGame {
 				showGameOver();
 				addLives();
 				addLevel();
+				System.out.println(frog.frogLevel);
 			}
 		};
 	}

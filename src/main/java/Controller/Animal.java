@@ -37,7 +37,7 @@ public class Animal extends Actor {
 
 	public int DeathAnimationTime = 0;
 
-	public int frogLevel = 1;
+	public int frogLevel;
 	LevelInfo frogSpeed = new LevelInfo();
 
 	
@@ -120,6 +120,10 @@ public class Animal extends Actor {
 		}
 		});
 	}
+
+	public void setFrogLevel(int level){
+		this.frogLevel = level;
+	}
 		
 	public void frogReposition() {
 		setY(FrogPositionY);
@@ -195,22 +199,8 @@ public class Animal extends Actor {
 		}
 	}
 
-	public void IntersectLongLog() {
-		move(frogSpeed.frogSpeed(frogLevel, 1), 0);
-	}
-
-	public void IntersectLog() {
-		move(frogSpeed.frogSpeed(frogLevel, 0), 0);
-	}
-
-
 	public void addPoints(int point){
 		this.points += point;
-	}
-	
-	
-	public void IntersectTurtle() {
-		move(frogSpeed.frogSpeed(frogLevel, 2), 0);
 	}
 
 	public void IntersectEnd() {
@@ -249,7 +239,7 @@ public class Animal extends Actor {
 				if (getIntersectingObjects(Turtle.class).get(0).isSunk()) {
 					intersectWater = true;
 				} else {
-					move(frogSpeed.ObjSpeed(frogLevel, 5), 0);
+					move(frogSpeed.ObjSpeed(frogLevel, 7), 0);
 				}
 			}
 			 else if (getIntersectingObjects(End.class).size() >= 1) {
