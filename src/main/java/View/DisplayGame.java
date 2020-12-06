@@ -18,8 +18,9 @@ public class DisplayGame {
 	World gamePane;
 	Animal frog;
 	Stage gameStage;
-	Music music;
+	Music music = new Music();
 	DisplayGameOver displayGameOver;
+
 	final int GridY = 55;
 	int level;
 	int totalpoints;
@@ -39,6 +40,7 @@ public class DisplayGame {
 		addEnd();
 		addQuitButton();
 		timerstart();
+
 
 	}
 
@@ -156,14 +158,6 @@ public class DisplayGame {
 		gamePane.add(frog);
 	}
 
-	public void addDigit() {
-		ScoreBar bar = new ScoreBar(frog.getPoints());
-
-		if (frog.changeScore()) {
-			gamePane.add(bar.getText());
-		}
-	}
-
 	public void addMusic() {
 		music.playMusic();
 	}
@@ -210,6 +204,7 @@ public class DisplayGame {
 	public void timerstart() {
 		gameTimer();
 		timer.start();
+		music.playMusic();
 	}
 
 	public void showGameOver() {
@@ -268,7 +263,7 @@ public class DisplayGame {
 				showGameOver();
 				addLives();
 				addLevel();
-				System.out.print(totalpoints);
+
 			}
 		};
 	}

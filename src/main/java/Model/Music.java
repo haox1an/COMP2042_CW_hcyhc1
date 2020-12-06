@@ -9,7 +9,8 @@ import javafx.util.Duration;
 public class Music {
 
     MediaPlayer mediaPlayer;
-    public static final String MUSIC_PATH = "src/main/resources/Media/FroggerMedia.mp3";
+    private String MUSIC_PATH = "src/main/resources/Media/FroggerMedia.mp3";
+
     public Music() {
 
     }

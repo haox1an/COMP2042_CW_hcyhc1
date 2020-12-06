@@ -1,15 +1,7 @@
 package Controller;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import Model.Car;
-import Model.End;
-import Model.Log;
-import Model.LongLog;
-import Model.LongTruck;
-import Model.Truck;
-import Model.Turtle;
+import Model.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -40,13 +32,11 @@ public class Animal extends Actor {
 	private final int FrogImgSize = 40;
 	
 	public boolean death = false;
-	public boolean changeScore = false;
 	public boolean intersectCar = false;
 	public boolean intersectWater = false;
+
 	public int DeathAnimationTime = 0;
-	double w = 800;
-	ArrayList<End> inter = new ArrayList<End>();
-	public int totalscore;
+
 	public int frogLevel = 1;
 	LevelInfo frogSpeed = new LevelInfo();
 
@@ -81,8 +71,7 @@ public class Animal extends Actor {
 			{
 				move(0, -movementY);
 				setImage(frogImg(4));
-				changeScore = true;
-				points += 10;
+				addPoints(10);
 
 			}
 
@@ -96,6 +85,7 @@ public class Animal extends Actor {
 			{
 				move(0, movementY);
 				setImage(frogImg(6));
+				addPoints(-10);
 			}
 
 			if (event.getCode() == KeyCode.D || event.getCode() == KeyCode.RIGHT)
@@ -110,8 +100,7 @@ public class Animal extends Actor {
 		if (death) {}
 			else {
 			if (event.getCode() == KeyCode.W || event.getCode() == KeyCode.UP) {
-				changeScore = true;
-				points+=10;
+				addPoints(10);
 				setImage(frogImg(0));
 				move(0, -movementY);
 			}
@@ -122,6 +111,7 @@ public class Animal extends Actor {
 			if (event.getCode() == KeyCode.S || event.getCode() == KeyCode.DOWN) {
 				 move(0, movementY);
 				setImage(frogImg(2));
+				addPoints(-10);
 			}
 			if (event.getCode() == KeyCode.D || event.getCode() == KeyCode.RIGHT) {
 				 move(movementX, 0);
@@ -140,8 +130,6 @@ public class Animal extends Actor {
 		String car = "car";
 		String water = "water";
 		death = true;
-		changeScore = true;
-
 
 		final Image[] cardeath = new Image[4];
 		cardeath[0] = new Image("file:src/main/java/Controller/cardeath1.png", FrogImgSize, FrogImgSize, true, true);
@@ -183,12 +171,14 @@ public class Animal extends Actor {
 				this.DeathAnimationTime = 0;
 				setImage(frog[0]);
 				death = false;
-				points-= 20;
+				addPoints(-100);
 
 
 			}
 
 		}
+
+
 
 	public void checkIsFrogAtTheEdge() {
 		if (getY()<0 || getY()>800) {
@@ -212,8 +202,11 @@ public class Animal extends Actor {
 	public void IntersectLog() {
 		move(frogSpeed.frogSpeed(frogLevel, 0), 0);
 	}
-	
 
+
+	public void addPoints(int point){
+		this.points += point;
+	}
 	
 	
 	public void IntersectTurtle() {
@@ -223,10 +216,9 @@ public class Animal extends Actor {
 	public void IntersectEnd() {
 		if (getIntersectingObjects(End.class).get(0).isEnd()) {
 			this.end--;
-			points -= 50;
+			addPoints(-100);
 		}
-		points+=50;
-		changeScore = true;
+		points+=100;
 		getIntersectingObjects(End.class).get(0).setEnd();
 		frogReposition();
 		this.end++;
@@ -241,7 +233,7 @@ public class Animal extends Actor {
 				getIntersectingObjects(Truck.class).size() >= 1 ||
 				getIntersectingObjects(LongTruck.class).size() >= 1)
 				{
-//					intersectCar = true;
+					intersectCar = true;
 				}
 
 			else if (getIntersectingObjects(Log.class).size() >= 1 && !death) {
@@ -263,10 +255,10 @@ public class Animal extends Actor {
 
 					IntersectEnd();
 				}
-//
-//			else if (getY() < waterPositionY) {
-//				intersectWater = true;
-//			}
+
+			else if (getY() < waterPositionY) {
+				intersectWater = true;
+			}
 			getlives();
 
 			CheckIntersect(intersectCar, intersectWater, now);
@@ -279,22 +271,13 @@ public class Animal extends Actor {
 		}
 
 	public boolean getStop() {
-
 		return end == 5;
 	}
 	
 	public int getPoints() {
 		return points;
 	}
-	
-	public boolean changeScore() {
-		if (changeScore){
-			changeScore = false;
-		return true;
-	}
-		return false;
-	}
-	
+
 	public boolean gameOver(){
 		return this.lives < 1;
 	}
@@ -307,9 +290,5 @@ public class Animal extends Actor {
 		frogReposition();
 		lives = 5;
 		end = 0;
-		totalscore = this.points;
-
 	}
-
-
 }
