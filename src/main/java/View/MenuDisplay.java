@@ -28,6 +28,7 @@ public class MenuDisplay {
 		menuScene = new Scene(mainPane, 600, 800);
 		menuStage = new Stage();
 		menuStage.setScene(menuScene);
+		menuStage.setTitle("Frogger");
 		createBackground();
 		createStartButton();
 		createHelpButton();

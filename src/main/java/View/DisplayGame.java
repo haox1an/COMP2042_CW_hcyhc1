@@ -21,8 +21,7 @@ public class DisplayGame {
 	Music music;
 	DisplayGameOver displayGameOver;
 	final int GridY = 55;
-	int level = 9;
-	ScoreBar bar;
+	int level;
 	int totalpoints;
 	int Maxlevel = 9;
 
@@ -34,6 +33,7 @@ public class DisplayGame {
 		gameStage.setScene(gameScene);
 		gameStage.setTitle("Frogger");
 		createBackground();
+		setLevel(5);
 		addObstacles(level);
 		addFrog();
 		addEnd();
@@ -42,6 +42,9 @@ public class DisplayGame {
 
 	}
 
+	public void setLevel(int level){
+		this.level = level;
+	}
 
 
 	public void addObstacles(int lvl) {
@@ -198,6 +201,11 @@ public class DisplayGame {
 
 	}
 
+	public void setTotalscore(int frogpoints){
+		this.totalpoints = frogpoints;
+
+	}
+
 
 	public void timerstart() {
 		gameTimer();
@@ -206,7 +214,7 @@ public class DisplayGame {
 
 	public void showGameOver() {
 		if (frog.gameOver()) {
-			totalpoints += frog.getPoints();
+			setTotalscore(frog.getPoints());
 			gameStage.hide();
 			displayGameOver = new DisplayGameOver(totalpoints);
 			displayGameOver.createStage();
@@ -220,7 +228,7 @@ public class DisplayGame {
 
 		if (frog.getStop()) {
 			if (level > 9) {
-				totalpoints += frog.getPoints();
+				setTotalscore(frog.getPoints());
 				gameStage.hide();
 				DisplayWin displayWin = new DisplayWin(totalpoints);
 				displayWin.createStage();
@@ -236,7 +244,7 @@ public class DisplayGame {
 	}
 
 	public void changeLv(int level){
-		totalpoints += frog.getPoints();
+		setTotalscore(frog.getPoints());
 		frog.reset();
 		gamePane.getChildren().clear();
 		createBackground();
@@ -247,17 +255,12 @@ public class DisplayGame {
 
 	}
 
-	public int getTotalscore(){
-		 totalpoints += frog.getPoints();
-		return totalpoints;
-	}
 
 	public void gameTimer() {
 		timer = new AnimationTimer() {
 			@Override
 			public void handle(long now) {
 				List<Actor> actors = gamePane.getObjects(Actor.class);
-
 				for (Actor anActor : actors) {
 					anActor.act(now);
 				}
@@ -265,12 +268,7 @@ public class DisplayGame {
 				showGameOver();
 				addLives();
 				addLevel();
-				System.out.println(totalpoints);
-//				System.out.println(frog.getPoints);
-
-
-
-
+				System.out.print(totalpoints);
 			}
 		};
 	}

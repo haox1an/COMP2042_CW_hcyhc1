@@ -23,6 +23,7 @@ public class HelpDisplay {
 		helpPane = new World();
 		helpScene = new Scene(helpPane, 600, 800);
 		helpStage.setScene(helpScene);
+		helpStage.setTitle("Frogger");
 		helpStage.show();
 		createBackground();
 		createQuitButton();

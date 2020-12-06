@@ -95,7 +95,7 @@ public class DisplayWin {
     public void setAlert(int score){
         recordScore(score);
         Alert winAlert = new Alert(Alert.AlertType.INFORMATION);
-        winAlert.setTitle("Scoreboard");
+        winAlert.setTitle("You Won");
         winAlert.setHeaderText("Your Score: " + score);
         winAlert.setContentText("Scoreboard: " + frogScore.displayScore());
         winAlert.show();

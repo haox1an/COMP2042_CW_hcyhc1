@@ -32,7 +32,7 @@ public class DisplayGameOver {
         gameoverStage.setTitle("Game Over");
         createBackground();
         createText("PRESS SPACEBAR TO PLAY AGAIN", 25, 750);
-        createText("Your Score is\n\n\t\t\t" + scores, 170, 350);
+        createText("Your Score is\n\n\t\t  " + scores, 170, 350);
         keyListener();
         setAlert(scores);
         }
@@ -88,11 +88,11 @@ public class DisplayGameOver {
 
     public void setAlert(int score){
         recordScore(score);
-        Alert winAlert = new Alert(Alert.AlertType.INFORMATION);
-        winAlert.setTitle("Scoreboard");
-        winAlert.setHeaderText("Your Score: " + score);
-        winAlert.setContentText("Scoreboard: " + frogScore.displayScore());
-        winAlert.show();
+        Alert loseAlert = new Alert(Alert.AlertType.INFORMATION);
+        loseAlert.setTitle("Game Over");
+        loseAlert.setHeaderText("Your Score: " + score);
+        loseAlert.setContentText("Scoreboard: " + frogScore.displayScore());
+        loseAlert.show();
     }
 
 
