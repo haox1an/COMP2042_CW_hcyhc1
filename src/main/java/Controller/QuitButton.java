@@ -40,45 +40,25 @@ public class QuitButton extends Button{
 	
 	
 	private void initializeButtonListener() {
-		setOnMousePressed(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				if(event.getButton().equals(MouseButton.PRIMARY))
-				{
-					setButtonPressedStyle();
-				}	
+		setOnMousePressed(event -> {
+			if(event.getButton().equals(MouseButton.PRIMARY))
+			{
+				setButtonPressedStyle();
 			}
 		});
 		
-		setOnMouseReleased(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				if(event.getButton().equals(MouseButton.PRIMARY))
-				{
-					setButtonReleasedStyle();
-				}
+		setOnMouseReleased(event -> {
+			if(event.getButton().equals(MouseButton.PRIMARY))
+			{
+				setButtonReleasedStyle();
 			}
 		});
 		
 		
-		setOnMouseEntered(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				{
-					setButtonPressedStyle();
-				}
-			}
-		});
+		setOnMouseEntered(event -> setButtonPressedStyle());
 		
 		
-		setOnMouseExited(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				{
-					setButtonReleasedStyle();
-				}
-			}
-		});
+		setOnMouseExited(event -> setButtonReleasedStyle());
 	}
 	
 	

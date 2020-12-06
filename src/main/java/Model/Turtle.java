@@ -47,12 +47,12 @@ public class Turtle extends Actor{
 	
 	public Turtle(int xpos, int ypos, double s) {
 		turtle = new Image[6];
-		turtle[0] = new Image("file:src/main/java/Model/TurtleAnimation1.png",size, size, true, true);
-		turtle[1] = new Image("file:src/main/java/Model/TurtleAnimation2.png", size, size, true, true);
-		turtle[2] = new Image("file:src/main/java/Model/TurtleAnimation3.png", size, size, true, true);
-		turtle[3] = new Image("file:src/main/java/Model/TurtleAnimation2Wet.png", size, size, true, true);
-		turtle[4] = new Image("file:src/main/java/Model/TurtleAnimation3Wet.png", size, size, true, true);
-		turtle[5] = new Image("file:src/main/java/Model/TurtleAnimation4Wet.png", size, size, true, true);
+		turtle[0] = new Image("file:src/main/resources/Img/TurtleAnimation1.png",size, size, true, true);
+		turtle[1] = new Image("file:src/main/resources/Img/TurtleAnimation2.png", size, size, true, true);
+		turtle[2] = new Image("file:src/main/resources/Img/TurtleAnimation3.png", size, size, true, true);
+		turtle[3] = new Image("file:src/main/resources/Img/TurtleAnimation2Wet.png", size, size, true, true);
+		turtle[4] = new Image("file:src/main/resources/Img/TurtleAnimation3Wet.png", size, size, true, true);
+		turtle[5] = new Image("file:src/main/resources/Img/TurtleAnimation4Wet.png", size, size, true, true);
 		
 		setX(xpos);
 		setY(ypos);

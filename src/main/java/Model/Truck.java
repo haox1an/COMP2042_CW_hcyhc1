@@ -14,10 +14,10 @@ public class Truck extends Actor {
 	
 	public Truck(int xpos, int ypos, double s) {
 		if (s < 0) {
-		setImage(new Image("file:src/main/java/Model/truck1Left.png", size, size,true, true));
+		setImage(new Image("file:src/main/resources/Img/truck1Left.png", size, size,true, true));
 		}
 		if (s > 0 ) {
-			setImage(new Image("file:src/main/java/Model/truck1Right.png", size, size,true, true));
+			setImage(new Image("file:src/main/resources/Img/truck1Right.png", size, size,true, true));
 		}
 		setX(xpos);
 		setY(ypos);

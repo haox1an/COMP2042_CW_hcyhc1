@@ -14,7 +14,7 @@ public class Log extends Actor {
 	}
 	
 	public Log(int xpos, int ypos, double s) {
-		setImage(new Image("file:src/main/java/Model/log3.png", size,size, true, true));
+		setImage(new Image("file:src/main/resources/Img/log3.png", size,size, true, true));
 		setX(xpos);
 		setY(ypos);
 		speed = s;

@@ -14,7 +14,7 @@ public class LongLog extends Actor{
 	}
 	
 	public LongLog(int xpos, int ypos, double s) {
-		setImage(new Image("file:src/main/java/Model/logs.png", size, size, true, true));
+		setImage(new Image("file:src/main/resources/Img/logs.png", size, size, true, true));
 		setX(xpos);
 		setY(ypos);
 		speed = s;

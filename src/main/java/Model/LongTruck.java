@@ -14,10 +14,10 @@ public class LongTruck extends Actor {
 	
 	public LongTruck(int xpos, int ypos, double s) {
 		if (s < 0) {
-		setImage(new Image("file:src/main/java/Model/truck2Left.png", size, size,true, true));
+		setImage(new Image("file:src/main/resources/Img/truck2Left.png", size, size,true, true));
 		}
 		if (s > 0 ) {
-			setImage(new Image("file:src/main/java/Model/truck2Right.png", size, size,true, true));
+			setImage(new Image("file:src/main/resources/Img/truck2Right.png", size, size,true, true));
 		}
 		setX(xpos);
 		setY(ypos);

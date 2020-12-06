@@ -14,10 +14,10 @@ public class Car extends Actor {
 	
 	public Car(int xpos, int ypos, double s) {
 		if (s < 0) {
-		setImage(new Image("file:src/main/java/Model/car1Left.png", size, size,true, true));
+		setImage(new Image("file:src/main/resources/Img/car1Left.png", size, size,true, true));
 		}
 		if (s > 0 ) {
-			setImage(new Image("file:src/main/java/Model/car1Right.png", size, size,true, true));
+			setImage(new Image("file:src/main/resources/Img/car1Right.png", size, size,true, true));
 		}
 		setX(xpos);
 		setY(ypos);

@@ -52,14 +52,14 @@ public class Animal extends Actor {
 
 	public Image frogImg(int num){
 		frog = new Image[8];
-		frog[0] = new Image("file:src/main/java/Controller/froggerUp.png", FrogImgSize, FrogImgSize, true, true);
-		frog[1] = new Image("file:src/main/java/Controller/froggerLeft.png", FrogImgSize, FrogImgSize, true, true);
-		frog[2] = new Image("file:src/main/java/Controller/froggerDown.png", FrogImgSize, FrogImgSize, true, true);
-		frog[3] = new Image("file:src/main/java/Controller/froggerRight.png", FrogImgSize, FrogImgSize, true, true);
-		frog[4] = new Image("file:src/main/java/Controller/froggerUpJump.png", FrogImgSize, FrogImgSize, true, true);
-		frog[5] = new Image("file:src/main/java/Controller/froggerLeftJump.png", FrogImgSize, FrogImgSize, true, true);
-		frog[6] = new Image("file:src/main/java/Controller/froggerDownJump.png", FrogImgSize, FrogImgSize, true, true);
-		frog[7] = new Image("file:src/main/java/Controller/froggerRightJump.png", FrogImgSize, FrogImgSize, true, true);
+		frog[0] = new Image("file:src/main/resources/Img/froggerUp.png", FrogImgSize, FrogImgSize, true, true);
+		frog[1] = new Image("file:src/main/resources/Img/froggerLeft.png", FrogImgSize, FrogImgSize, true, true);
+		frog[2] = new Image("file:src/main/resources/Img/froggerDown.png", FrogImgSize, FrogImgSize, true, true);
+		frog[3] = new Image("file:src/main/resources/Img/froggerRight.png", FrogImgSize, FrogImgSize, true, true);
+		frog[4] = new Image("file:src/main/resources/Img/froggerUpJump.png", FrogImgSize, FrogImgSize, true, true);
+		frog[5] = new Image("file:src/main/resources/Img/froggerLeftJump.png", FrogImgSize, FrogImgSize, true, true);
+		frog[6] = new Image("file:src/main/resources/Img/froggerDownJump.png", FrogImgSize, FrogImgSize, true, true);
+		frog[7] = new Image("file:src/main/resources/Img/froggerRightJump.png", FrogImgSize, FrogImgSize, true, true);
 		return frog[num];
 	}
 
