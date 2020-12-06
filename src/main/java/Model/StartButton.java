@@ -1,11 +1,10 @@
 package Model;
 
-import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
+
 
 
 public class StartButton extends Button {
@@ -40,44 +39,24 @@ public class StartButton extends Button {
 
 
     private void initializeButtonListener() {
-        setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if(event.getButton().equals(MouseButton.PRIMARY))
-                {
-                    setButtonPressedStyle();
-                }
+        setOnMousePressed(event -> {
+            if(event.getButton().equals(MouseButton.PRIMARY))
+            {
+                setButtonPressedStyle();
             }
         });
 
-        setOnMouseReleased(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if(event.getButton().equals(MouseButton.PRIMARY))
-                {
-                    setButtonReleasedStyle();
-                }
+        setOnMouseReleased(event -> {
+            if(event.getButton().equals(MouseButton.PRIMARY))
+            {
+                setButtonReleasedStyle();
             }
         });
 
 
-        setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                {
-                    setButtonPressedStyle();
-                }
-            }
-        });
+        setOnMouseEntered(event -> setButtonPressedStyle());
 
 
-        setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                {
-                    setButtonReleasedStyle();
-                }
-            }
-        });
+        setOnMouseExited(event -> setButtonReleasedStyle());
     }
 }

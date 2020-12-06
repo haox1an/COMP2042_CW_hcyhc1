@@ -22,7 +22,6 @@ public class DisplayGame {
 	final int GridY = 55;
 	int level;
 	int totalpoints;
-	int Maxlevel = 9;
 
 	public DisplayGame() {
 
@@ -77,37 +76,37 @@ public class DisplayGame {
 
 		//row4
 		for (i = 0; i < info.ObjNum(lvl,4); i++) {
-			gamePane.add(new Car(0 + (i * 200), lane[4], info.ObjSpeed(lvl, 4)));
+			gamePane.add(new Car(300 + (i * 200), lane[4], info.ObjSpeed(lvl, 4)));
 		}
 
 		//row5
 		for (i = 0; i < info.ObjNum(lvl,5); i++) {
-			gamePane.add(new Turtle(0 + (i * 300), lane[6], info.ObjSpeed(lvl, 7)));
+			gamePane.add(new Turtle(25 + (i * 350), lane[6], info.ObjSpeed(lvl, 7)));
 		}
 
 
 		//row6
 
 		for (i = 0; i < info.ObjNum(lvl,6); i++) {
-			gamePane.add(new Log(0 + (i * 220), lane[7], info.ObjSpeed(lvl, 6)));
+			gamePane.add(new Log( (i * 220), lane[7], info.ObjSpeed(lvl, 6)));
 		}
 
 //		//row7
 
 		for (i = 0; i < info.ObjNum(lvl,7); i++) {
-			gamePane.add(new Turtle(0 + (i * 250), lane[8], info.ObjSpeed(lvl, 7)));
+			gamePane.add(new Turtle(50 + (i * 250), lane[8], info.ObjSpeed(lvl, 7)));
 		}
 //
 //		//row8
 
 		for (i = 0; i < info.ObjNum(lvl,8); i++) {
-			gamePane.add(new LongLog(0 + (i * 350), lane[9], info.ObjSpeed(lvl, 8)));
+			gamePane.add(new LongLog(200 + (i * 350), lane[9], info.ObjSpeed(lvl, 8)));
 		}
 //
 //		//row9
 
 		for (i = 0; i < info.ObjNum(lvl,9); i++) {
-			gamePane.add(new Log(0 + (i * 250), lane[10], info.ObjSpeed(lvl, 9)));
+			gamePane.add(new Log(150 + (i * 250), lane[10], info.ObjSpeed(lvl, 9)));
 		}
 	}
 
@@ -144,17 +143,6 @@ public class DisplayGame {
 		gamePane.add(new FrogLife(frog.getlives()));
 	}
 
-	public void setNumber(int n) {
-		int shift = 0;
-		while (n > 0) {
-			int d = n / 10;
-			int k = n - d * 10;
-			n = d;
-			gamePane.add(new Digit(k, 30, 700 - shift, 25));
-			shift += 30;
-		}
-	}
-
 	public void addQuitButton() {
 		QuitButton quitButton = new QuitButton(510, -2);
 		gamePane.add(quitButton);
@@ -167,15 +155,14 @@ public class DisplayGame {
 	}
 
 	public void setTotalscore(int frogpoints){
-		this.totalpoints = frogpoints;
-
+		this.totalpoints += frogpoints;
 	}
 
 
 	public void timerstart() {
 		gameTimer();
 		timer.start();
-//		music.playMusic();
+		music.playMusic();
 	}
 
 	public void showGameOver() {
@@ -233,7 +220,7 @@ public class DisplayGame {
 				showGameOver();
 				addLives();
 				addLevel();
-				System.out.println(frog.frogLevel);
+				System.out.println(totalpoints);
 			}
 		};
 	}

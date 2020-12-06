@@ -3,7 +3,7 @@ package Model;
 import java.io.File;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.util.Duration;
+
 
 
 public class Music {
@@ -22,7 +22,7 @@ public class Music {
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.play();
     }
-    
+
 
     public void stopMusic(){
         mediaPlayer.stop();
