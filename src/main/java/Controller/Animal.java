@@ -6,7 +6,10 @@ import Model.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 
-
+/**
+ * This class is to create sprite where actor can control to achieve the objectives
+ * @author Chung Hao Xian
+ */
 
 public class Animal extends Actor {
 
@@ -34,15 +37,18 @@ public class Animal extends Actor {
 	LevelInfo frogSpeed = new LevelInfo();
 
 	
-	
-	public Animal() {
 
+	public Animal() {
 		setImage(frogImg(0));
 		frogReposition();
 		keyListener();
-	
 	}
 
+	/**
+	 * This method stores numbers of images of the sprite(frog)
+	 * @param num number represent the specific image of the sprite(frog)
+	 * @return image of the sprite(frog)
+	 */
 	public Image frogImg(int num){
 		frog = new Image[8];
 		frog[0] = new Image("file:src/main/resources/Img/froggerUp.png", FrogImgSize, FrogImgSize, true, true);
@@ -56,6 +62,10 @@ public class Animal extends Actor {
 		return frog[num];
 	}
 
+	/**
+	 * This method allows player to control the sprite with keyboard
+	 * Mainly keys W,A,S,D
+	 */
 		public void keyListener() {
 		setOnKeyPressed(event -> {
 			if(death) {}
@@ -114,15 +124,28 @@ public class Animal extends Actor {
 		});
 	}
 
+	/**
+	 * This method set sprite's level
+	 * @param level level of the game
+	 */
 	public void setFrogLevel(int level){
 		this.frogLevel = level;
 	}
-		
+
+	/**
+	 * This method reposition the sprite to it's spawn location
+	 */
 	public void frogReposition() {
 		setY(FrogPositionY);
 		setX(FrogPositionX);		
 		}
-	
+
+	/**
+	 * This method display the animation of the sprite when the sprite intersect with different object
+	 * Different animation will show, if intersect with different object ( water or car)
+	 * @param now Time frame of the game
+	 * @param type Type of animation to be shown
+	 */
 	public void frogDeath(long now, String type) {
 		String car = "car";
 		String water = "water";
@@ -176,7 +199,9 @@ public class Animal extends Actor {
 		}
 
 
-
+	/**
+	 * This method prevent the sprite move out of the window
+	 */
 	public void checkIsFrogAtTheEdge() {
 		if (getY()<0 || getY()>800) {
 			setY(FrogPositionY);	
@@ -192,10 +217,17 @@ public class Animal extends Actor {
 		}
 	}
 
+	/**
+	 * This method record the points of the score
+	 * @param point point of the sprite, will differ according to different movement
+	 */
 	public void addPoints(int point){
 		this.points += point;
 	}
 
+	/**
+	 * This method shown what happen if intersect with the 'end'(cave-like image)
+	 */
 	public void IntersectEnd() {
 		if (getIntersectingObjects(End.class).get(0).isEnd()) {
 			this.end--;
@@ -206,8 +238,11 @@ public class Animal extends Actor {
 		frogReposition();
 		this.end++;
 	}
-	
-	
+
+	/**
+	 * This method update the sprite according to frame at the moment of the time
+	 * @param now current frame of the animation
+	 */
 	@Override
 	public void act(long now) {
 
@@ -216,7 +251,7 @@ public class Animal extends Actor {
 				getIntersectingObjects(Truck.class).size() >= 1 ||
 				getIntersectingObjects(LongTruck.class).size() >= 1)
 				{
-//					intersectCar = true;
+					intersectCar = true;
 				}
 
 			else if (getIntersectingObjects(Log.class).size() >= 1 && !death) {
@@ -229,7 +264,7 @@ public class Animal extends Actor {
 			}
 
 			else if (getIntersectingObjects(Turtle.class).size() >= 1) {
-				if (getIntersectingObjects(Turtle.class).get(0).isSunk()) {
+				if (getIntersectingObjects(WetTurtle.class).get(0).isSunk()) {
 					intersectWater = true;
 				} else {
 					move(frogSpeed.ObjSpeed(frogLevel, 7), 0);
@@ -241,12 +276,19 @@ public class Animal extends Actor {
 				}
 
 			else if (getY() < waterPositionY) {
-//				intersectWater = true;
+				intersectWater = true;
 			}
 			getlives();
 
 			CheckIntersect(intersectCar, intersectWater, now);
 		}
+
+	/**
+	 * This method check if the this sprite(frog) has intersected with other object
+	 * @param intersectCar boolean check if intersected with car or truck
+	 * @param intersectWater  boolean check if intersected with water
+ 	 * @param now current frame of the animation
+	 */
 	public void CheckIntersect(boolean intersectCar, boolean intersectWater, long now) {
 			if(intersectCar)
 				frogDeath(now, "car");
@@ -254,22 +296,41 @@ public class Animal extends Actor {
 				frogDeath(now, "water");
 		}
 
+	/**
+	 * check if the player has achieved the objectives
+	 * @return boolean true to inform the system that player has completed
+	 */
 	public boolean getStop() {
 		return end == 5;
 	}
-	
+
+	/**
+	 * Get the points of the player
+	 * @return int points of player
+	 */
 	public int getPoints() {
 		return points;
 	}
 
+	/**
+	 * Check if player has used up sprite's lives
+	 * @return boolean true to inform the system that game over
+	 */
 	public boolean gameOver(){
 		return this.lives < 1;
 	}
 
+	/**
+	 * Get the 'lives' of the sprite
+	 * @return int of live of sprite
+	 */
 	public int getlives(){
 		return this.lives;
 	}
 
+	/**
+	 * This method is use to reset the sprite back to initial state
+	 */
 	public void reset(){
 		frogReposition();
 		lives = 5;

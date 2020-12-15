@@ -3,11 +3,19 @@ package Model;
 import Controller.Actor;
 import javafx.scene.image.Image;
 
+/**
+ * class to display the number of current level
+ */
 public class Level extends Actor {
     final int size = 80;
     Image lvWord;
     Image lvNum;
     Image lvFinal;
+
+    /**
+     * Display image of number of current level
+     * @param level type image to be displayed
+     */
     public Level(int level){
         if(level == 0)
         {

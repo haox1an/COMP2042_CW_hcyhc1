@@ -10,6 +10,9 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+/**
+ * This class create file, write and read score from file, and display the score
+ */
 public class FrogScore{
 
     private final String FILE_PATH = "src/main/resources/File/score.txt";
@@ -21,6 +24,10 @@ public class FrogScore{
 
     }
 
+    /**
+     * This method is use to create file
+     * If file has created, open the file
+     */
     public void createFile(){
 
         try{
@@ -34,6 +41,11 @@ public class FrogScore{
         }
     }
 
+    /**
+     * Add Score to the file
+     * @param score player's score
+     * @throws FileNotFoundException
+     */
     public void addScore(int score) throws FileNotFoundException {
 
         scoreList = new ArrayList<>();
@@ -55,7 +67,10 @@ public class FrogScore{
     }
 
 
-
+    /**
+     * Display the Score from the file
+     * @return
+     */
         public static String displayScore(){
             StringBuilder sb = new StringBuilder();
             for (Integer s : scoreList)
@@ -67,15 +82,5 @@ public class FrogScore{
             return sb.toString();
         }
 
-        public boolean isHigher(int score){
-            for (int i = 0; i < scoreList.size(); i++) {
-                if (score >= scoreList.get(i) )
-                    return true;
-            }
-               return false;
-        }
 
-        public List <Integer> getList(){
-            return scoreList;
-        }
 }

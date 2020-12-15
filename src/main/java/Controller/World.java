@@ -6,6 +6,9 @@ import java.util.List;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 
+/**
+ * This class is the pane and is used by all the Stages
+ */
 
 public class World extends Pane {
     
@@ -37,18 +40,28 @@ public class World extends Pane {
 
 		});
     }
-    
 
-    
-    public void add(Actor actor) {
+
+	/**
+	 * To add the actor to the pane
+	 * @param actor actor to be added
+	 */
+	public void add(Actor actor) {
         getChildren().add(actor);
     }
-    
+	/**
+	 * To add the node to the pane
+	 * @param node node to be added
+	 */
     public void add(Node node) {
     	getChildren().add(node);
     	
     }
 
+	/**
+	 * To remove the actor to the pane
+	 * @param actor actor to be remove
+	 */
     public void remove(Actor actor) {
         getChildren().remove(actor);
     }

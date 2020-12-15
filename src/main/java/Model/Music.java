@@ -4,7 +4,10 @@ import java.io.File;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-
+/**
+ * This class is used to play music
+ * @author Chung Hao Xian
+ */
 
 public class Music {
 
@@ -15,6 +18,9 @@ public class Music {
 
     }
 
+    /**
+     * Method to locate mp3 file and play
+     */
     public void playMusic() {
         String musicFile = MUSIC_PATH;
         Media sound = new Media(new File(musicFile).toURI().toString());
@@ -23,17 +29,12 @@ public class Music {
         mediaPlayer.play();
     }
 
-
+    /**
+     * method to stop the music
+     */
     public void stopMusic(){
         mediaPlayer.stop();
 
     }
 
-    public void muteMusic(){
-        mediaPlayer.setMute(true);
-    }
-
-    public void unmuteMusic(){
-        mediaPlayer.setMute(false);
-    }
 }

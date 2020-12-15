@@ -1,9 +1,18 @@
 package Controller;
 
+/**
+ * This method is to control the speed and number of sprite/obstacles according to the level
+ */
 public class LevelInfo {
 
     public LevelInfo(){};
 
+    /**
+     * This method control the number of the sprite
+     * @param lvl current level of the game
+     * @param rowNum Type of the sprite
+     * @return the number of the sprite
+     */
     public double ObjNum(int lvl, int rowNum){
         double objNum[][] =
                 {       //row1.........row9
@@ -24,6 +33,12 @@ public class LevelInfo {
         return objNum[lvl - 1][rowNum];
     }
 
+    /**
+     * This method control the speed of the sprite according to the level
+     * @param lvl current level of the game
+     * @param rowNum type of the sprite
+     * @return the speed of the sprite
+     */
     public double ObjSpeed(int lvl, int rowNum){
         double objSpeed[][] = {
                 {1, -1, 1, -1, 2, .75, .75, -1., -2, .75},
@@ -41,35 +56,6 @@ public class LevelInfo {
                     return objSpeed[lvl - 1][rowNum];
     }
 
-    public double frogSpeed(int lvl, int rowNum){
-        double frogSpeed[][] =
-                {
-                        //speed
-                        //Log       = 0.75
-                        //LongLog   = -2
-                        //Turtle    = -1
-                        {0.75, -2, -1},//lv1
-                        {0.75, -2, -3},
-                        {0.75, -2, -1},
-                        {0.75, -2, -1},
-                        {0.75, -2, -1},
-                        {0.75, -2, -1},
-                        {0.75, -2, -1},
-                        {0.75, -2, -1},
-                        {0.75, -2, -1},
-                        {0.75, -2, -1},
-
-
-
-
-
-
-                };
-
-        return frogSpeed[lvl - 1][rowNum];
-
-
-    }
 
 
 }

@@ -2,21 +2,24 @@ package Model;
 
 import Controller.Actor;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
+/**
+ * Class to create 'Wet Turtle' Actor, and this turtle will sink into water
+ */
 public class WetTurtle extends Actor{
 	Image[] Turtle;
 	private double speed;
 	final int size = 130;
 	boolean sunk = false;
-
+	/**
+	 * Display image of turtle in different state using different image
+	 * @param now
+	 */
 	@Override
 	public void act(long now) {
 
 				if (now/900000000  % 4 ==0) {
 					setImage(Turtle[1]);
 
-					
 				}
 				else if (now/900000000 % 4 == 1) {
 					setImage(Turtle[0]);
@@ -32,8 +35,13 @@ public class WetTurtle extends Actor{
 		move(speed , 0);
 		reposition(-200,600,speed);
 	}
-	
-	
+
+	/**
+	 * To display the image of the sprite
+	 * @param xpos Position X to be placed
+	 * @param ypos Position Y to be placed
+	 * @param s Speed of the sprite
+	 */
 	public WetTurtle(int xpos, int ypos, double s) {
 		Turtle = new Image[4];
 		Turtle[0] = new Image("file:src/main/resources/Img/TurtleAnimation1.png", size, size, true, true);
@@ -45,6 +53,11 @@ public class WetTurtle extends Actor{
 		speed = s;
 		setImage(Turtle[1]);
 	}
+
+	/**
+	 * Boolean of whether turtle has sunk into water
+	 * @return true if turtle has sunk, else false
+	 */
 	public boolean isSunk() {
 		return sunk;
 	}
