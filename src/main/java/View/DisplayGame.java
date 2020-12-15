@@ -5,11 +5,15 @@ import java.util.List;
 
 import Controller.*;
 import Model.*;
-
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * This class 'DisplayGame', display the stage of the game
+ * @author Chung Hao Xian
+ *
+ */
 public class DisplayGame {
 	AnimationTimer timer;
 	Scene gameScene;
@@ -23,13 +27,11 @@ public class DisplayGame {
 	int level;
 	int totalpoints;
 
+	/**
+	 * DisplayGame() display sprite of the game, score, buttons, background, level no.
+	 */
 	public DisplayGame() {
-
-		gamePane = new World();
-		gameScene = new Scene(gamePane, 600, 800);
-		gameStage = new Stage();
-		gameStage.setScene(gameScene);
-		gameStage.setTitle("Frogger");
+		initializeStage();
 		createBackground();
 		setLevel(1);
 		addObstacles(level);
@@ -39,11 +41,31 @@ public class DisplayGame {
 		timerstart();
 	}
 
+	/**
+	 * initiializeStage() initialize pane, scene, stage, set scene and title
+	 */
+	public void initializeStage(){
+		gamePane = new World();
+		gameScene = new Scene(gamePane, 600, 800);
+		gameStage = new Stage();
+		gameStage.setScene(gameScene);
+		gameStage.setTitle("Frogger");
+	}
+
+	/**
+	 *	setLevel() set current level of the game
+	 *
+	 * @param level to set level of the game
+	 */
 	public void setLevel(int level){
 		this.level = level;
 	}
 
 
+	/**
+	 * addObstacles() add sprite onto the scene
+	 * @param lvl set speed and number of sprite according to this parameter
+	 */
 	public void addObstacles(int lvl) {
 		int i;
 		int[] lane = new int[11];
@@ -94,7 +116,7 @@ public class DisplayGame {
 //		//row7
 
 		for (i = 0; i < info.ObjNum(lvl,7); i++) {
-			gamePane.add(new Turtle(50 + (i * 250), lane[8], info.ObjSpeed(lvl, 7)));
+			gamePane.add(new WetTurtle(50 + (i * 250), lane[8], info.ObjSpeed(lvl, 7)));
 		}
 //
 //		//row8
@@ -110,6 +132,10 @@ public class DisplayGame {
 		}
 	}
 
+	/**
+	 * addEnd() add 'end' sprite to the scene
+	 *
+	 */
 	public void addEnd() {
 		gamePane.add(new End(15));
 		gamePane.add(new End(143));
@@ -118,31 +144,50 @@ public class DisplayGame {
 		gamePane.add(new End(527));
 	}
 
+	/**
+	 * createBackground() add background image to the scene
+	 * using BackgroundImage() class
+	 */
 	public void createBackground() {
 		BackgroundImage gameBackground = new BackgroundImage("file:src/main/resources/Img/iKogsKW.png");
 		gamePane.add(gameBackground);
 	}
 
+	/**
+	 * createGame() show the stage
+	 */
 	public void createGame() {
 		gameStage.show();
 	}
 
+	/**
+	 * addFrog() create 'Frog' sprite onto the scene
+	 */
 	public void addFrog() {
 		frog = new Animal();
 		gamePane.add(frog);
 		frog.setFrogLevel(level);
 	}
 
+	/**
+	 * addLevel() Display the number of the current level
+	 */
 	public void addLevel(){
 		gamePane.add(new Level(0));
 		gamePane.add(new Level(level));
-
 	}
 
+	/**
+	 * addLives() display the number of lives the player has
+	 */
 	public void addLives() {
 		gamePane.add(new FrogLife(frog.getlives()));
 	}
 
+	/**
+	 * addQuitButton() display quit button
+	 * button exits to menu when pressed
+	 */
 	public void addQuitButton() {
 		QuitButton quitButton = new QuitButton(510, -2);
 		gamePane.add(quitButton);
@@ -150,21 +195,33 @@ public class DisplayGame {
 			gameStage.hide();
 			MenuDisplay menu = new MenuDisplay();
 			menu.createMenuStage();
+			music.stopMusic();
 		});
 
 	}
 
+	/**
+	 *setTotalscore() add all the score from every level
+	 * @param frogpoints record the total score through out every level
+	 */
 	public void setTotalscore(int frogpoints){
 		this.totalpoints += frogpoints;
 	}
 
-
+	/**
+	 * timerstart() start the timer
+	 * and play music
+	 */
 	public void timerstart() {
 		gameTimer();
 		timer.start();
 		music.playMusic();
 	}
 
+	/**
+	 * showGameOver() change scene when player loses the game
+	 *
+	 */
 	public void showGameOver() {
 		if (frog.gameOver()) {
 			setTotalscore(frog.getPoints());
@@ -174,11 +231,15 @@ public class DisplayGame {
 			timer.stop();
 			music.stopMusic();
 		}
-
-
 	}
 
+	/**
+	 * showGameOver()
+	 * the level increment, when player has achieved the objectives
+	 * If level > 10, change scene
+	 */
 	public void showWinning() {
+
 		if (frog.getStop()) {
 			if (level > 9) {
 				setTotalscore(frog.getPoints());
@@ -188,6 +249,7 @@ public class DisplayGame {
 				timer.stop();
 				music.stopMusic();
 			}
+
 			else {
 				level++;
 				changeLv(level);
@@ -196,6 +258,10 @@ public class DisplayGame {
 		}
 	}
 
+	/**
+	 * changeLv() update the scene according to the level
+	 * @param level display sprite according to level
+	 */
 	public void changeLv(int level){
 		setTotalscore(frog.getPoints());
 		frog.reset();
@@ -207,7 +273,9 @@ public class DisplayGame {
 		addQuitButton();
 	}
 
-
+	/**
+	 * gameTimer() create timer to update the sprites.
+	 */
 	public void gameTimer() {
 		timer = new AnimationTimer() {
 			@Override
@@ -220,7 +288,6 @@ public class DisplayGame {
 				showGameOver();
 				addLives();
 				addLevel();
-				System.out.println(totalpoints);
 			}
 		};
 	}

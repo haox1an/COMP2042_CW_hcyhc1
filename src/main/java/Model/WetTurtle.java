@@ -6,10 +6,10 @@ import javafx.scene.image.ImageView;
 
 public class WetTurtle extends Actor{
 	Image[] Turtle;
-	private int speed;
-	int i = 1;
-	boolean bool = true;
+	private double speed;
+	final int size = 130;
 	boolean sunk = false;
+
 	@Override
 	public void act(long now) {
 
@@ -34,7 +34,7 @@ public class WetTurtle extends Actor{
 	}
 	
 	
-	public WetTurtle(int xpos, int ypos, int s, int size) {
+	public WetTurtle(int xpos, int ypos, double s) {
 		Turtle = new Image[4];
 		Turtle[0] = new Image("file:src/main/resources/Img/TurtleAnimation1.png", size, size, true, true);
 		Turtle[1] = new Image("file:src/main/resources/Img/TurtleAnimation2Wet.png", size, size, true, true);

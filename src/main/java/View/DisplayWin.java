@@ -12,9 +12,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
-
 public class DisplayWin {
 
     Stage winStage;
@@ -23,7 +20,6 @@ public class DisplayWin {
     Animal frog;
     FrogScore frogScore;
 
-    int points;
     public DisplayWin(int score) {
         winPane = new World();
         winStage = new Stage();

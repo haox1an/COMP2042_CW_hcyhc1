@@ -1,11 +1,18 @@
 package p4_group_8_repo;
 
-import Controller.Animal;
 import View.MenuDisplay;
-import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import View.DisplayGameOver;
+
+/**
+ * This program is an re-implementation of a classic retro game called "Frogger"
+ * The source of the program : https://github.com/hirish99/Frogger-Arcade-Game
+ *
+ * @author Chung Hao Xian
+ * @version 2.0
+ * @since 24-11-2020
+ */
+
 
 public class Main extends Application {
 
