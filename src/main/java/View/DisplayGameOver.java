@@ -15,6 +15,7 @@ import javafx.scene.text.Font;
  * This class display 'Game Over' scene after player has lost the game
  * it allows player to restart the game
  * it displays player's score
+ * @author Chung Hao Xian
  */
 public class DisplayGameOver {
 
@@ -138,9 +139,6 @@ public class DisplayGameOver {
         loseAlert.setContentText("Scoreboard: " + frogScore.displayScore());
         loseAlert.show();
     }
-
-
-
 
 
 }
