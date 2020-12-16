@@ -78,55 +78,39 @@ public class DisplayGame {
 		for (i = 0; i < info.ObjNum(lvl,0); i++) {
 			gamePane.add(new Car(100 + (i * 400), lane[0], info.ObjSpeed(lvl, 0)));
 		}
-
 		//row 1
 		for (i = 0; i < info.ObjNum(lvl,1); i++) {
 			gamePane.add(new Truck(0 + (i * 330), lane[1], info.ObjSpeed(lvl, 1)));
 		}
-
-
-//		//row2
-
+		//row2
 		for (i = 0; i < info.ObjNum(lvl,2); i++) {
 			gamePane.add(new Car(0 + (i * 230), lane[2], info.ObjSpeed(lvl, 2)));
 		}
-
-//		//row3
+		//row3
 		for (i = 0; i < info.ObjNum(lvl,3); i++) {
 			gamePane.add(new LongTruck(0 + (i * 450), lane[3], info.ObjSpeed(lvl, 3)));
 		}
-
 		//row4
 		for (i = 0; i < info.ObjNum(lvl,4); i++) {
 			gamePane.add(new Car(300 + (i * 200), lane[4], info.ObjSpeed(lvl, 4)));
 		}
-
 		//row5
 		for (i = 0; i < info.ObjNum(lvl,5); i++) {
 			gamePane.add(new Turtle(25 + (i * 350), lane[6], info.ObjSpeed(lvl, 7)));
 		}
-
-
 		//row6
-
 		for (i = 0; i < info.ObjNum(lvl,6); i++) {
 			gamePane.add(new Log( (i * 220), lane[7], info.ObjSpeed(lvl, 6)));
 		}
-
-//		//row7
-
+		//row7
 		for (i = 0; i < info.ObjNum(lvl,7); i++) {
 			gamePane.add(new WetTurtle(50 + (i * 250), lane[8], info.ObjSpeed(lvl, 7)));
 		}
-//
-//		//row8
-
+		//row8
 		for (i = 0; i < info.ObjNum(lvl,8); i++) {
 			gamePane.add(new LongLog(200 + (i * 350), lane[9], info.ObjSpeed(lvl, 8)));
 		}
-//
-//		//row9
-
+		//row9
 		for (i = 0; i < info.ObjNum(lvl,9); i++) {
 			gamePane.add(new Log(150 + (i * 250), lane[10], info.ObjSpeed(lvl, 9)));
 		}

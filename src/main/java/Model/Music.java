@@ -12,20 +12,26 @@ import javafx.scene.media.MediaPlayer;
 public class Music {
 
     MediaPlayer mediaPlayer;
-    private String MUSIC_PATH = "src/main/resources/Media/FroggerMedia.mp3";
-
+    private String musicFile = "src/main/resources/Media/FroggerMedia.mp3";
+    private Media sound;
     public Music() {
 
     }
 
     /**
-     * Method to locate mp3 file and play
+     * Method to locate mp3 file
      */
-    public void playMusic() {
-        String musicFile = MUSIC_PATH;
-        Media sound = new Media(new File(musicFile).toURI().toString());
+    public void openMusic(){
+        sound = new Media(new File(musicFile).toURI().toString());
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+    }
+
+    /**
+     * Method to play music
+     */
+    public void playMusic() {
+        openMusic();
         mediaPlayer.play();
     }
 
@@ -34,7 +40,14 @@ public class Music {
      */
     public void stopMusic(){
         mediaPlayer.stop();
+    }
 
+    /**
+     * Method to get the Music file currently playing, for test purpose
+     * @return String of music file
+     */
+    public String getMusicFile(){
+        return musicFile;
     }
 
 }

@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 
 /**
  * This class create file, write and read score from file, and display the score
+ * @author Chung Hao Xian
  */
 public class FrogScore{
 
@@ -19,9 +20,8 @@ public class FrogScore{
 
     static List<Integer> scoreList;
     File scoreFile;
-
+    Scanner reader;
     public FrogScore(){
-
     }
 
     /**
@@ -49,7 +49,7 @@ public class FrogScore{
     public void addScore(int score) throws FileNotFoundException {
 
         scoreList = new ArrayList<>();
-        Scanner reader = new Scanner(scoreFile);
+        reader = new Scanner(scoreFile);
         PrintWriter writer;
         scoreList.add(score);
         while (reader.hasNextLine()) {
@@ -69,7 +69,7 @@ public class FrogScore{
 
     /**
      * Display the Score from the file
-     * @return
+     * @return the score from the file
      */
         public static String displayScore(){
             StringBuilder sb = new StringBuilder();
@@ -80,6 +80,14 @@ public class FrogScore{
                 sb.append("\n");
             }
             return sb.toString();
+        }
+
+    /**
+     * Method to get arrayList
+     * @return All elements of arrayList
+     */
+    public ArrayList<Integer> getList(){
+
         }
 
 
