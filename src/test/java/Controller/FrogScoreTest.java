@@ -4,10 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class FrogScoreTest {
     File file;
     List<Integer> list;
+    List<Integer> expected;
 
     /**
      * Test if file has been created
@@ -32,6 +30,7 @@ class FrogScoreTest {
     @Test
     void addScore() {
         list = new ArrayList<>();
+        expected = new ArrayList<>();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -39,9 +38,16 @@ class FrogScoreTest {
         list.add(5);
         list.add(6);
         list.add(7);
+        expected.add(7);
+        expected.add(6);
+        expected.add(5);
+        expected.add(4);
+        expected.add(3);
+
         list.sort(Collections.reverseOrder());
         list = list.stream().limit(5).collect(Collectors.toList());
         assertSame(5, list.size(), "LeaderBoard has 5 elements");
         assertNotSame( list.size() > 5, list.size(),"Error: LeaderBoard hold more than 5 elements");
+        assertEquals(expected, list, "Leaderboard is sorted");
     }
 }
