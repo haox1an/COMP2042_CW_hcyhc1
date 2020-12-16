@@ -42,6 +42,6 @@ class FrogScoreTest {
         list.sort(Collections.reverseOrder());
         list = list.stream().limit(5).collect(Collectors.toList());
         assertSame(5, list.size(), "LeaderBoard has 5 elements");
-
+        assertNotSame( list.size() > 5, list.size(),"Error: LeaderBoard hold more than 5 elements");
     }
 }

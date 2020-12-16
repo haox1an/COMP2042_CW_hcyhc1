@@ -21,7 +21,6 @@ class MusicTest {
     @Test
     void playMusic() {
         assertEquals("src/main/resources/Media/FroggerMedia.mp3", music.getMusicFile());
-        assertNotEquals("src/main/resources/Media/FroggerMedia.mp3", music.getMusicFile(), "Incorrect Music File");
 
     }
 }

@@ -82,13 +82,5 @@ public class FrogScore{
             return sb.toString();
         }
 
-    /**
-     * Method to get arrayList
-     * @return All elements of arrayList
-     */
-    public ArrayList<Integer> getList(){
-
-        }
-
 
 }
