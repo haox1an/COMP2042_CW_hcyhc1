@@ -20,7 +20,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Intellih - Comp2042_CW" target="8" />
+      <module name="Intellih - Comp2042_CW" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
