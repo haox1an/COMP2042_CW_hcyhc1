@@ -264,6 +264,9 @@ public class Animal extends Actor {
 			}
 
 			else if (getIntersectingObjects(Turtle.class).size() >= 1) {
+				move(frogSpeed.ObjSpeed(frogLevel, 7), 0);
+			}
+			else if (getIntersectingObjects(WetTurtle.class).size() >= 1){
 				if (getIntersectingObjects(WetTurtle.class).get(0).isSunk()) {
 					intersectWater = true;
 				} else {
