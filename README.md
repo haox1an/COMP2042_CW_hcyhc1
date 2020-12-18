@@ -1,11 +1,11 @@
-#CW Software Maintenance Coursework
+CW Software Maintenance Coursework
 COMP2042
 
 Student Name: Chung Hao Xian
 
 Student ID: 20109354
 
-##Extension of the project
+#Extension of the project
 
 - Added Menu scene; Game over scene when the player lost the game; Win scene when player wins the game; Help scene to provide instruction of the game
 - Added 10 levels to the game, where number and speed of object will increase, as the level progress
@@ -19,7 +19,7 @@ Student ID: 20109354
 - Added build files, so the game can run on every computer. With Maven
 - Added 4 Junit Tests. With Maven
 
-##Refactoring of the code
+#Refactoring of the code
 - MVC pattern is added to the project 
 - Classes are divided into 3 packages, Model, View and Controller. Main class remains in package 'p4_group_8_repo'.
 - Images, txt files, mp3 files, and font files are added to different folder.
