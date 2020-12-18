@@ -1,6 +1,8 @@
-package Controller;
+package Model;
 
 
+import Controller.Actor;
+import Controller.LevelInfo;
 import Model.*;
 
 import javafx.scene.image.Image;

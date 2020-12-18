@@ -1,6 +1,5 @@
 package View;
 
-import Controller.Animal;
 import Controller.FrogScore;
 import Controller.World;
 import Model.BackgroundImage;
